@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DEMSoft.Plot</name>
+    </assembly>
+    <members>
+        <member name="T:DEMSoft.Plot.AbstractPlot">
+            <summary>
+            Abstract plot to use PlotLine, PlotPoints
+            </summary>
+        </member>
+        <member name="F:DEMSoft.Plot.AbstractPlot.plot">
+            <summary>
+            plot variable to store plot object to be implement as PlotLine, PlotPoints
+            </summary>
+        </member>
+        <member name="M:DEMSoft.Plot.AbstractPlot.SetColor(System.Double,System.Double,System.Double)">
+            <summary>
+            Sets the color of this object. The color is specified by the rgb
+            components of the color. The components must be in the range [0, 1]. For
+            instance, pure red is defined by r=1, g=0 and b=0.
+            </summary>
+            <param name="r">the red component of the color</param>
+            <param name="g">the green component of the color</param>
+            <param name="b">the blue component of the color</param>
+        </member>
+        <member name="M:DEMSoft.Plot.AbstractPlot.SetColor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Specifies the color for this object. The color is specified by the rgb
+            components of the color. The components must be in the range [0, 255].
+            </summary>
+            <param name="r">the red component of the color</param>
+            <param name="g">the green component of the color</param>
+            <param name="b">the blue component of the color</param>
+        </member>
+        <member name="M:DEMSoft.Plot.AbstractPlot.SetColor(System.Drawing.Color)">
+            <summary>
+            Specifies the color for this object. The color is specified by the Color object
+            from System.Drawing
+            </summary>
+            <param name="color">Color</param>
+        </member>
+        <member name="M:DEMSoft.Plot.AbstractPlot.SetRandomColor">
+            <summary>
+            Assigns a randomly chosen color to this object.
+            </summary>
+        </member>
+        <member name="M:DEMSoft.Plot.AbstractPlot.SetWidth(System.Single)">
+            <summary>
+            Set width of line
+            </summary>
+            <param name="w"></param>
+        </member>
+        <member name="M:DEMSoft.Plot.AbstractPlot.InputData(System.Double[],System.Double[],System.String)">
+            <summary>
+            Input data x and y array
+            </summary>
+            <param name="x">x array</param>
+            <param name="y">y array</param>
+            <param name="name">name of plot</param>
+        </member>
+        <member name="M:DEMSoft.Plot.AbstractPlot.InputData(DEMSoft.Function.FunctionRToR,System.Double,System.Double,System.Int32,System.String)">
+            <summary>
+            Input data to plot
+            </summary>
+            <param name="f">Function to plot</param>
+            <param name="a">Lower bound</param>
+            <param name="b">Upper bound</param>
+            <param name="n">Number of point to plot include a and b</param>
+            <param name="name"></param>
+        </member>
+        <member name="M:DEMSoft.Plot.AbstractPlot.GetPlot">
+            <summary>
+            Return plot object
+            </summary>
+            <returns>plot</returns>
+        </member>
+        <member name="T:DEMSoft.Plot.GraphRealTime">
+            <summary>
+            Graph windows form in real time updating
+            </summary>
+        </member>
+        <member name="M:DEMSoft.Plot.GraphRealTime.#ctor">
+            <summary>
+            Constructor of Graph windows form
+            </summary>
+        </member>
+        <member name="M:DEMSoft.Plot.GraphRealTime.AddGraphControl(System.String,System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="nameTab"></param>
+            <param name="title"></param>
+            <param name="xLabel"></param>
+            <param name="yLabel"></param>
+        </member>
+        <member name="F:DEMSoft.Plot.GraphRealTime.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DEMSoft.Plot.GraphRealTime.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DEMSoft.Plot.GraphRealTime.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:DEMSoft.Plot.PlotBar">
+            <summary>
+            Plor bar class object.
+            </summary>
+        </member>
+        <member name="M:DEMSoft.Plot.PlotBar.#ctor">
+            <summary>
+            Construct plot bar.
+            </summary>
+        </member>
+        <member name="T:DEMSoft.Plot.PlotLine">
+            <summary>
+            Plot line class object
+            </summary>
+        </member>
+        <member name="M:DEMSoft.Plot.PlotLine.#ctor">
+            <summary>
+            Construct plot line
+            </summary>
+        </member>
+        <member name="M:DEMSoft.Plot.PlotLine.SetLineType(System.Int32)">
+            <summary>
+            Set type of line plot
+            (default) 1-solid, For dotted line, can be from 2 to 5 for different dot patterns
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:DEMSoft.Plot.PlotLine.SetLineType(DEMSoft.Plot.LineType)">
+            <summary>
+            Set type of line plot
+            </summary>
+            <param name="type">SOLID, DOT1, DOT2, DOT3, DOT4 </param>
+        </member>
+        <member name="M:DEMSoft.Plot.PlotLine.SetLineWidth(System.Single)">
+            <summary>
+            Set width of line.
+            </summary>
+            <param name="width">width of line</param>
+        </member>
+        <member name="T:DEMSoft.Plot.PlotPoints">
+            <summary>
+            Plot set of points
+            </summary>
+        </member>
+        <member name="M:DEMSoft.Plot.PlotPoints.#ctor">
+            <summary>
+            Construct plot points
+            </summary>
+        </member>
+        <member name="M:DEMSoft.Plot.PlotPoints.SetMarkerStyle(DEMSoft.Plot.MarkerStyle)">
+            <summary>
+            Set marker style
+            </summary>
+            <param name="marker">CROSS, PLUS, SQUARE, CIRCLE, DIAMOND</param>
+        </member>
+        <member name="M:DEMSoft.Plot.PlotPoints.SetMarkerStyle(System.Int32)">
+            <summary>
+            Set marker style
+            </summary>
+            <param name="marker">type of marker style 
+            0-none    1-cross    2-plus    3-square    4-circle    5-diamond</param>
+        </member>
+        <member name="M:DEMSoft.Plot.PlotPoints.SetMarkerSize(System.Single)">
+            <summary>
+            Set marker size
+            </summary>
+            <param name="size">size of marker</param>
+        </member>
+        <member name="T:DEMSoft.Plot.Plotter">
+            <summary>
+            Plot 2D object class to plot line and points
+            </summary>
+        </member>
+        <member name="M:DEMSoft.Plot.Plotter.#ctor">
+            <summary>
+            Construct plotter object
+            </summary>
+        </member>
+        <member name="M:DEMSoft.Plot.Plotter.ClearPlot">
+            <summary>
+            Clear plot to release memory
+            </summary>
+        </member>
+        <member name="M:DEMSoft.Plot.Plotter.AddPlot(DEMSoft.Plot.AbstractPlot)">
+            <summary>
+            Add plot object into plotter
+            </summary>
+            <param name="plot">The plot is draw</param>
+        </member>
+        <member name="M:DEMSoft.Plot.Plotter.Plot(System.String)">
+            <summary>
+            Plot generator then output image file
+            </summary>
+            <param name="pathfilename">path of image plot file</param>
+        </member>
+        <member name="M:DEMSoft.Plot.Plotter.SetName(System.String)">
+            <summary>
+            Set title of windows
+            </summary>
+            <param name="str"></param>
+        </member>
+        <member name="M:DEMSoft.Plot.Plotter.SetShowLegend(System.Boolean)">
+            <summary>
+            Set show legend
+            </summary>
+            <param name="v">default is true</param>
+        </member>
+        <member name="M:DEMSoft.Plot.Plotter.SetDrawAxesAtOrigin(System.Boolean)">
+            <summary>
+            Set draw axes at origin
+            </summary>
+            <param name="b"></param>
+        </member>
+        <member name="M:DEMSoft.Plot.Plotter.SetForceAxesToBounds(System.Boolean)">
+            <summary>
+            Set force axes to bounds
+            </summary>
+            <param name="b"></param>
+        </member>
+    </members>
+</doc>
