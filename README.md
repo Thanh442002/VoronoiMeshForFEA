@@ -1,4 +1,5 @@
 # Polygonal Mesh for FEM
+This project focuses on building polygonal meshes for finite element method (FEM) and polygonal element modeling in space. The number of elements corresponds to the number of points planted inside the geometric domain.
 
 ## Voronoi diagram
 
@@ -8,15 +9,16 @@ Illustrate polygonal elements commonly found in nature
 
 The creation of polygonal elements or Voronoi cells is based on the library [Hull-Delaunay-Voronoi](https://github.com/Scrawk/Hull-Delaunay-Voronoi).
 
+
 ![voro](fig/voronoi.png) 
 
 In which the main implementation function to filter out polygons in the problem domain from randomly planted points is [GenerateVoronoi](https://github.com/Thanh442002/VoronoiMeshForFEA/blob/29f5e425a10c2549837c27a40b05c3c5baef7018/PolygonalMesher.cs#L1103). 
 
-![noLloyd](fig/voronoi_noloop.png)
+<img src="fig/voronoi_noloop.png" width="450"/>
 
 Lloyd's algorithm is applied to improve the mesh :thumbsup:
 
-![lloyd](fig/voronoi_loop50.png)
+<img src="fig/voronoi_loop50.png" width="450"/> 
 
 A few mesh images
 
