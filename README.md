@@ -1,4 +1,4 @@
-# Polygonal Mesh for FEM
+# Polygonal Mesh
 This project focuses on building polygonal meshes for finite element method (FEM) and polygonal element modeling in space. The number of elements corresponds to the number of points planted inside the geometric domain.
 
 The goal of the model is to obtain a list of nodes and manage elements based on the nodes.
