@@ -11,6 +11,8 @@ Illustrate polygonal elements commonly found in nature
 
 ![Natural Voronoi](fig/hexagonal.jpg)
 
+
+## Generate Polygon and Lloyd's algorithm
 The creation of polygonal elements or Voronoi cells is based on the library [Hull-Delaunay-Voronoi](https://github.com/Scrawk/Hull-Delaunay-Voronoi).
 
 
