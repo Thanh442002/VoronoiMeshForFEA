@@ -15,7 +15,7 @@ namespace DemoMesh
     {
         static void Main() 
         {
-            //If use another problem, go to class dist in library PolygonalMesher to change the distance function//
+            //If use another problem, go to [dist](Dist.cs) in library PolygonalMesher to change the distance function//
             //Replace dis function before by your function to copmpute the distance //
             /////////////////Geomertry BEAM///////////////////
             List<Abstract1DParametricGeometry> curves = new List<Abstract1DParametricGeometry>();
