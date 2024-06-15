@@ -1,0 +1,2576 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DEMSoft.NURBS</name>
+    </assembly>
+    <members>
+        <member name="T:DEMSoft.NURBS.Abstract1DParametricBasisFunction">
+            <summary>
+            One dimensional parametric basis function
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricBasisFunction.#ctor(System.Int32,System.Double[])">
+            <summary>
+            Constructor abstract class
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricBasisFunction.GetDegree">
+            <summary>
+            Returns the polynomial degree.
+            </summary>
+            <returns>p</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricBasisFunction.SetDegree(System.Int32)">
+            <summary>
+            Specifies the polynomial degree.
+            </summary>
+            <param name="p">new polynomial degree</param>
+        </member>
+        <member name="P:DEMSoft.NURBS.Abstract1DParametricBasisFunction.Degree">
+            <summary>
+            Get and set degree of basis function
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricBasisFunction.GetCountBasisFunction">
+            <summary>
+            Returns the number of basis functions.
+            </summary>
+            <returns>the dimension</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricBasisFunction.GetValueBasisFunction(System.Double,System.Int32)">
+            <summary>
+            Returns value of the specified shape function.
+            </summary>
+            <param name="xi">parameter</param>
+            <param name="idx">index of the shape function in global coordination</param>
+            <returns>value of one basis function</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricBasisFunction.GetValueBasisFunctions(System.Double)">
+            <summary>
+            Returns value of all basis functions.
+            </summary>
+            <param name="xi">parameter</param>
+            <returns>all basis functions</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricBasisFunction.GetDerivativeBasisFunction(System.Double,System.Int32,System.Int32)">
+            <summary>
+            Compute derivative n(th) level
+            </summary>
+            <param name="xi">parameter</param>
+            <param name="n">nth derivative</param>
+            <param name="idx">index of basis function in global coordination</param>
+            <returns>All derivertive level of one basis function</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricBasisFunction.GetDerivativeBasisFunctions(System.Double,System.Int32)">
+            <summary>
+            Compute derivative n(th) level [nth,idx basis]
+            </summary>
+            <param name="xi">parametric</param>
+            <param name="n">nth derivative (n less than p)</param>
+            <returns>All derivertive level of basis functions [nth,idx basis]</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricBasisFunction.SetKnotVector(System.Double[])">
+            <summary>
+            Set knot vector
+            </summary>
+            <param name="kv">knot vector [0;0;0;1;2;3;4;4;5;5;5]</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricBasisFunction.SetKnotVector(DEMSoft.NURBS.KnotVector)">
+            <summary>
+            Set knot vector
+            </summary>
+            <param name="kv">knot vector [0;0;0;1;2;3;4;4;5;5;5]</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricBasisFunction.GetKnotVector">
+            <summary>
+            Get knot vector [0;0;0;1;2;3;4;4;5;5;5]
+            </summary>
+            <returns>knot vector</returns>
+        </member>
+        <member name="P:DEMSoft.NURBS.Abstract1DParametricBasisFunction.KnotVector">
+            <summary>
+            Get and set knot vector
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricBasisFunction.Plot(System.Int32)">
+            <summary>
+            Plot all basis functions or derivertive of basis functions
+            </summary>
+            <param name="type">0 - basis function   1 - derivertive of basis function   3 - both</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricBasisFunction.Plot(System.Int32,System.Int32)">
+            <summary>
+            Plot each basis function or derivertive of basis function
+            </summary>
+            <param name="type">0 - basis function   1 - derivertive of basis function   3 - both</param>
+            <param name="numIndexFunction">index of basis or derivertive of basis</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricBasisFunction.FindSpan(System.Double)">
+            <summary>
+            Find span of parametric
+            </summary>
+            <param name="xi">parametric</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricBasisFunction.Clone">
+            <summary>
+            Clone parameter basis function
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.NURBS.Abstract1DParametricGeometry">
+            <summary>
+            Geometry parameter curve
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.Abstract1DParametricGeometry.basis">
+            <summary>
+            Basis function of curve
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.Abstract1DParametricGeometry.cps">
+            <summary>
+            Control points
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.Abstract1DParametricGeometry.data">
+            <summary>
+            Data of curve to draw curve
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.#ctor(DEMSoft.NURBS.Abstract1DParametricBasisFunction,DEMSoft.NURBS.ControlPoint[])">
+            <summary>
+            Construct BSpline curve with knot
+            </summary>
+            <param name="basis">Basis function to draw curve</param>
+            <param name="cps">Control points</param>
+        </member>
+        <member name="P:DEMSoft.NURBS.Abstract1DParametricGeometry.Basis">
+            <summary>
+            Get and set basis function
+            </summary>
+        </member>
+        <member name="P:DEMSoft.NURBS.Abstract1DParametricGeometry.ControlPoints">
+            <summary>
+            Get and set control points
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.PointAt(System.Double)">
+            <summary>
+            Point on curve
+            </summary>
+            <param name="xi">parameter</param>
+            <returns>Point on curve</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.GetDataOnCurve">
+            <summary>
+            Get data of points for drawing with resolution, change RESOLUTION for smoother curve
+            </summary>
+            <returns>Points on curve</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.GetDataOnCurve(System.Int32)">
+            <summary>
+            Get data of points for drawing with resolution, change RESOLUTION for smoother curve
+            </summary>
+            <returns>Points on curve</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.Draw(DEMSoft.Drawing.ViewerForm)">
+            <summary>
+            Draw curve
+            </summary>
+            <param name="form">form to draw</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.DrawControlPoints(DEMSoft.Drawing.ViewerForm)">
+            <summary>
+            Draw control points
+            </summary>
+            <param name="form">form to draw</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.DrawCurve(DEMSoft.Drawing.ViewerForm)">
+            <summary>
+            Draw curve
+            </summary>
+            <param name="form">form to draw</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.DrawKnots(DEMSoft.Drawing.ViewerForm)">
+            <summary>
+            Draw knot points
+            </summary>
+            <param name="form">form to draw</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.DrawTangent(DEMSoft.Drawing.ViewerForm,System.Double,System.Double)">
+            <summary>
+            Draw tangent of curve
+            </summary>
+            <param name="form">vorm o draw</param>
+            <param name="xi">parameter</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.InsertKnot(System.Double,System.Int32)">
+            <summary>
+            Insert knot
+            </summary>
+            <param name="psiBar">parameter</param>
+            <param name="r">times of knot insertion</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.RemoveKnot(System.Double,System.Int32)">
+            <summary>
+            Remove knot
+            </summary>
+            <param name="xi">parameter</param>
+            <param name="num">times of removed knot</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.hRefinement(System.Double[])">
+            <summary>
+            h-Refinement with new knot vector to be insert
+            </summary>
+            <param name="X">new knot vector to be insert</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.hRefinement(System.Int32)">
+            <summary>
+            h-Refinement with number of mid-point to be insert
+            </summary>
+            <param name="numMidPoint">number of mid points</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.pRefinement(System.Int32)">
+            <summary>
+            p-Refinement
+            </summary>
+            <param name="t">Degree increasement</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.Split(System.Double)">
+            <summary>
+            Split curve into two curves at knot parameter
+            </summary>
+            <param name="psiBar">parameter</param>
+            <returns>two curves</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.Clone">
+            <summary>
+            Clone curve
+            </summary>
+            <returns>curve copied</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.TangentUnitVectorCurve(System.Double)">
+            <summary>
+            Get tangent of curve at xi
+            </summary>
+            <param name="xi">parameter on curve</param>
+            <returns>tangent</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.CurveDerivative1(System.Double,System.Int32)">
+            <summary>
+            Get derivative of curve with compute derivative of basis functions [dth][]
+            </summary>
+            <param name="xi">parameter</param>
+            <param name="d">dth derivative</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.CurveDerivCpts(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Compute the control points of all derivative curves and including dth derivative
+            </summary>
+            <param name="d">dth derivative</param>
+            <param name="r1">first index control point</param>
+            <param name="r2">second index control point</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.CurveDerivative2(System.Double,System.Int32)">
+            <summary>
+            Get derivative of curve without compute derivative of basis functions [dth][]
+            </summary>
+            <param name="xi">parameter</param>
+            <param name="d">dth derivative</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.SelectControlPointsByBox(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Select control points in box region
+            </summary>
+            <param name="xLower">x-lower</param>
+            <param name="xUpper">x-upper</param>
+            <param name="yLower">y-lower</param>
+            <param name="yUpper">y-upper</param>
+            <param name="zLower">z-lower</param>
+            <param name="zUpper">z-upper</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.SelectControlPointsBySphere(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Select control points in box region
+            </summary>
+            <param name="xCentre">x-coord centre point</param>
+            <param name="yCentre">y-coord centre point</param>
+            <param name="zCentre">z-coord centre point</param>
+            <param name="radius">radius of sphere region</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.SelectControlPointInTwoEndPoints(System.Int32)">
+            <summary>
+            Select Control Point on 1D Geometric in two end points
+            </summary>
+            <param name="index">0 - first point, 1 - last point</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.CreateRuleSurface(DEMSoft.NURBS.Abstract1DParametricGeometry)">
+            <summary>
+            CreateRuleSurface
+            </summary>
+            <param name="curve">parameter</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.IntersectingLine(System.Double,System.Double,System.Double,System.Double,System.Int32)">
+            <summary>
+            Get intersecting with edge by parametric on this curve
+            </summary>
+            <param name="x1">x-coord of first point on edge</param>
+            <param name="y1">y-coord of first point on edge</param>
+            <param name="x2">x-coord of second point on edge</param>
+            <param name="y2">y-coord of second point on edge</param>
+            <param name="n">number of span to divide to get intersection</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract1DParametricGeometry.IntersectingParametricCurve(DEMSoft.NURBS.Abstract1DParametricGeometry,System.Double[]@,System.Double[]@,System.Int32)">
+            <summary>
+            Get intersecting two curve by parametric on this curve
+            </summary>
+            <param name="cur2">other curve</param>
+            <param name="n">number of span to divide to get intersection</param>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.NURBS.Abstract2DParametricBasisFunction">
+            <summary>
+            Bi B-Spline basis function
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricBasisFunction.#ctor">
+            <summary>
+            Construct class
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricBasisFunction.GetValueBivariateBasisFunction(System.Double,System.Double,System.Int32,System.Int32)">
+            <summary>
+            Value of N(i,xi)*M(j,eta)
+            </summary>
+            <param name="i">index basis function at first direction in global coordinate</param>
+            <param name="xi">first parameter</param>
+            <param name="j">index basis function at second direction in global coordinate</param>
+            <param name="eta">second parameter</param>
+            <returns>value of bivariate basis function</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricBasisFunction.GetValueBivariateBasisFunctions(System.Double,System.Double)">
+            <summary>
+            All of values of Ni(i,xi)*Mi(j,eta) in span
+            </summary>
+            <param name="xi">parameter in direction xi</param>
+            <param name="eta">parameter in direction eta</param>
+            <returns>[p+1,q+1] value</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricBasisFunction.GetDerivativeBivariateBasisFunction(System.Double,System.Double,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Get value of derivative bivariate basis function
+            </summary>
+            <param name="i">index basis function at first direction in global coordinate</param>
+            <param name="xi">first parameter</param>
+            <param name="j">index basis function at second direction in global coordinate</param>
+            <param name="eta">second parameter</param>
+            <param name="d">dth derivative on two directions</param>
+            <returns>value of derivative</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricBasisFunction.GetDerivativeBivariateBasisFunctions(System.Double,System.Double,System.Int32)">
+            <summary>
+            Get derivative bivariate [p+1,q+1][kth,lth]
+            </summary>
+            <param name="xi">first direction parameter</param>
+            <param name="eta">first direction parameter</param>
+            <param name="d">dth derivative on two directions</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricBasisFunction.Plot">
+            <summary>
+            Plot all basis functions or derivertive of basis functions
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricBasisFunction.Plot(System.Int32,System.Int32)">
+            <summary>
+            Plot each basis function or derivertive of basis function
+            </summary>
+            <param name="i">index of first direction basis function</param>
+            <param name="j">index of second direction basis function</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricBasisFunction.Clone">
+            <summary>
+            Clone of Bivariate basis function
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.NURBS.Abstract2DParametricGeometry">
+            <summary>
+            Abstract parameter surface class
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.Abstract2DParametricGeometry.basis">
+            <summary>
+            Basis function of surface
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.Abstract2DParametricGeometry.cps">
+            <summary>
+            Control points
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.Abstract2DParametricGeometry.data">
+            <summary>
+            Data of surface to draw surface
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.Abstract2DParametricGeometry.resolution1">
+            <summary>
+            Resolution on one Interval in first direction
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.Abstract2DParametricGeometry.resolution2">
+            <summary>
+            Resolution on one Interval in second direction
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.Abstract2DParametricGeometry.isDrawSurface">
+            <summary>
+            Draw surface
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.Abstract2DParametricGeometry.colorSurface">
+            <summary>
+            Color of surface
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.#ctor(DEMSoft.NURBS.Abstract2DParametricBasisFunction,DEMSoft.NURBS.ControlPoint[0:,0:])">
+            <summary>
+            Construct BSpline surface with knot
+            </summary>
+            <param name="basis">Basis functions to draw surface</param>
+            <param name="cps">Control points</param>
+        </member>
+        <member name="P:DEMSoft.NURBS.Abstract2DParametricGeometry.ControlPoints">
+            <summary>
+            Get and set control points
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.PointAt(System.Double,System.Double)">
+            <summary>
+            Point on surface
+            </summary>
+            <param name="xi">parameter first dimension</param>
+            <param name="eta">parameter second dimension</param>
+            <returns>Point on surface</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.GetParametricOnSurface(System.Int32)">
+            <summary>
+            Get parametric on surface
+            </summary>
+            <param name="resolution">resolution on both direction</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.GetParametricOnSurface(System.Int32,System.Int32)">
+            <summary>
+            Get parametric on surface
+            </summary>
+            <param name="resolution1">resolution in first direction</param>
+            <param name="resolution2">resolution in second direction</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.GetDataOnSurface">
+            <summary>
+            Get data of points for drawing with default resolution, change RESOLUTION for smoother surface
+            </summary>
+            <returns>Points on curve</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.GetDataOnSurface(System.Int32,System.Int32)">
+            <summary>
+            Get data of points for drawing with user resolution, change RESOLUTION for smoother surface
+            </summary>
+            <param name="resolution1">resolution on first direction</param>
+            <param name="resolution2">resolution on second direction</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.Draw(DEMSoft.Drawing.ViewerForm)">
+            <summary>
+            Draw surface
+            </summary>
+            <param name="form">form to draw</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.DrawControlPoints(DEMSoft.Drawing.ViewerForm)">
+            <summary>
+            Draw control points
+            </summary>
+            <param name="form">form to draw</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.DrawSurface(DEMSoft.Drawing.ViewerForm)">
+            <summary>
+            Draw surface
+            </summary>
+            <param name="form">form to draw</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.DrawMesh(DEMSoft.Drawing.ViewerForm,System.Boolean)">
+            <summary>
+            Draw mesh (outline of knot) with many face
+            </summary>
+            <param name="form">form to draw</param>
+            <param name="isColorfullFace">Is faces draw?</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.DrawKnots(DEMSoft.Drawing.ViewerForm)">
+            <summary>
+            Draw knots
+            </summary>
+            <param name="form">form to draw</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.DrawTangent(DEMSoft.Drawing.ViewerForm,System.Double,System.Double,System.Int32,System.Double)">
+            <summary>
+            Draw tangent vector on direction
+            </summary>
+            <param name="form">form to draw</param>
+            <param name="xi">first direction parameter</param>
+            <param name="eta">second direction parameter</param>
+            <param name="direction">tangent direction</param>
+            <param name="lengthTangent">scale of length Tangent vector</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.DrawNormal(DEMSoft.Drawing.ViewerForm,System.Double,System.Double,System.Double)">
+            <summary>
+            Draw normal vector on surface at parametric point
+            </summary>
+            <param name="form">form to draw</param>
+            <param name="xi">first direction parameter</param>
+            <param name="eta">second direction parameter</param>
+            <param name="lengthTangent">scale of length Tangent vector</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.DrawNormalVectorAtCentriod(DEMSoft.Drawing.ViewerForm)">
+            <summary>
+            Draw normal vector on surface at the centriod point
+            </summary>
+            <param name="form"></param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.InsertKnot(System.Double,System.Int32,System.Int32)">
+            <summary>
+            Insert knot
+            </summary>
+            <param name="psiBar">parameter</param>
+            <param name="r">times of knot insertion</param>
+            <param name="dir">direction</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.Split(System.Double,System.Int32)">
+            <summary>
+            Split curve into two surface at knot parameter
+            </summary>
+            <param name="psiBar">parameter</param>
+            <returns>two surfaces</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.ExtractCurves(System.Double[],System.Int32)">
+            <summary>
+            Extract curves by parametric coordinate
+            </summary>
+            <param name="xi">array of parametric coordinate</param>
+            <param name="direction">index of direction on parametric coordinate</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.ExtractCurves(System.Int32,System.Int32)">
+            <summary>
+            Extract curves by number of the inside curves
+            </summary>
+            <param name="numberOfInsideCurves">Number of the inside curves</param>
+            <param name="direction">index of direction on parametric coordinate</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.hRefinement(System.Double[],System.Int32)">
+            <summary>
+            h-Refinement with new knot vector to be insert
+            </summary>
+            <param name="X">new knot vector to be insert</param>
+            <param name="dir">direction</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.pRefinement(System.Int32,System.Int32)">
+            <summary>
+            p-Refinement
+            </summary>
+            <param name="t">Degree increasement</param>
+            <param name="dir">direction</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.Clone">
+            <summary>
+            Copy surface
+            </summary>
+            <returns>copied surface</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.TangentVectorSurfaceOnDirection(System.Double,System.Double,System.Int32)">
+            <summary>
+            Get tangent vector of surface in each direction
+            </summary>
+            <param name="xi">first parameter direction</param>
+            <param name="eta">second parameter direction</param>
+            <param name="direction">direction to get tangent</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.SurfaceDerivative(System.Double,System.Double,System.Int32)">
+            <summary>
+            Get derivative surface [kth,lth][]
+            </summary>
+            <param name="xi">first direction parameter</param>
+            <param name="eta">first direction parameter</param>
+            <param name="d">dth derivative on two directions</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.NormalUnitVectorSurface(System.Double,System.Double)">
+            <summary>
+            Get normal vector of surface
+            </summary>
+            <param name="xi">first parameter direction</param>
+            <param name="eta">second parameter direction</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.SelectControlPointsByBox(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Select control points in box region
+            </summary>
+            <param name="xLower">x-lower</param>
+            <param name="xUpper">x-upper</param>
+            <param name="yLower">y-lower</param>
+            <param name="yUpper">y-upper</param>
+            <param name="zLower">z-lower</param>
+            <param name="zUpper">z-upper</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract2DParametricGeometry.SelectControlPointInTwoEndLines(System.Int32)">
+            <summary>
+            Select Control Point on 2D Geometric in two end line
+            </summary>
+            <param name="index">[0]([1]) - first (last) line on u direction, [2]([3]) - first (last) line on v direction</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricBasisFunction.GetValueTrivariateBasisFunction(System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Value of N(i,xi)*M(j,eta)*L(k,zeta)
+            </summary>
+            <param name="i">index basis function at first direction in global coordinate</param>
+            <param name="xi">first parameter</param>
+            <param name="j">index basis function at second direction in global coordinate</param>
+            <param name="eta">second parameter</param>
+            <param name="zeta">third parametric</param>
+            <param name="k">index basis function at third direction in global coordinate</param>
+            <returns>value of bivariate basis function</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricBasisFunction.GetValueTrivariateBasisFunctions(System.Double,System.Double,System.Double)">
+            <summary>
+            All of values of Ni(i,xi)*Mi(j,eta) in span
+            </summary>
+            <param name="xi">parameter in direction xi</param>
+            <param name="eta">parameter in direction eta</param>
+            <param name="zeta">parameter in direction zeta</param>
+            <returns>[p+1,q+1] value</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricBasisFunction.GetDerivativeTrivariateBasisFunctions(System.Double,System.Double,System.Double,System.Int32)">
+            <summary>
+            Get derivative bivariate [p+1,q+1][kth,lth]
+            </summary>
+            <param name="xi">first direction parameter</param>
+            <param name="eta">second direction parameter</param>
+            <param name="zeta">third direction parameter</param>
+            <param name="d">dth derivative on three directions</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricBasisFunction.GetDerivativeTrivariateBasisFunction(System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Get value of derivative bivariate basis function [kth,lth]
+            </summary>
+            <param name="i">index basis function at first direction in global coordinate</param>
+            <param name="xi">first parameter</param>
+            <param name="j">index basis function at second direction in global coordinate</param>
+            <param name="eta">second parameter</param>
+            /// <param name="zeta">third parametric</param>
+            <param name="k">index basis function at third direction in global coordinate</param>
+            <param name="d">dth derivative on two directions</param>
+            <returns>value of derivative</returns>
+        </member>
+        <member name="T:DEMSoft.NURBS.Abstract3DParametricGeometry">
+            <summary>
+            Abstract parameter volume class
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.Abstract3DParametricGeometry.basis">
+            <summary>
+            Basis function of volume
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.Abstract3DParametricGeometry.cps">
+            <summary>
+            Control points
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.Abstract3DParametricGeometry.data">
+            <summary>
+            Data of volume to draw volume
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.Abstract3DParametricGeometry.resolution1">
+            <summary>
+            Resolution on one Interval in first direction
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.Abstract3DParametricGeometry.resolution2">
+            <summary>
+            Resolution on one Interval in second direction
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.Abstract3DParametricGeometry.resolution3">
+            <summary>
+            Resolution on one Interval in third direction
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.Abstract3DParametricGeometry.isDrawGrid">
+            <summary>
+            Draw curve mesh
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.Abstract3DParametricGeometry.isDrawVolume">
+            <summary>
+            Draw surface
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.Abstract3DParametricGeometry.colorGrid">
+            <summary>
+            Color of grid mesh
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.Abstract3DParametricGeometry.colorVolume">
+            <summary>
+            Color of volume
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.Abstract3DParametricGeometry.widthGrid">
+            <summary>
+            Width of grid mesh
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.Abstract3DParametricGeometry.widthTangent">
+            <summary>
+            Width of tangent vector of curve
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricGeometry.#ctor(DEMSoft.NURBS.Abstract3DParametricBasisFunction,DEMSoft.NURBS.ControlPoint[0:,0:,0:])">
+            <summary>
+            Construct BSpline solid with knot
+            </summary>
+            <param name="basis">Basis functions to draw surface</param>
+            <param name="cps">Control points</param>
+        </member>
+        <member name="P:DEMSoft.NURBS.Abstract3DParametricGeometry.ControlPoints">
+            <summary>
+            Get and set control points
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricGeometry.PointAt(System.Double,System.Double,System.Double)">
+            <summary>
+            Point on volume
+            </summary>
+            <param name="xi">parameter first dimension</param>
+            <param name="eta">parameter second dimension</param>
+            <param name="zeta">parameter third dimension</param>
+            <returns>Point on solid</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricGeometry.GetParametricOnVolume(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Get parametric on volume
+            </summary>
+            <param name="resolution1">resolution in first direction</param>
+            <param name="resolution2">resolution in second direction</param>
+            <param name="resolution3">resolution in third direction</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricGeometry.GetParametricOnVolume(System.Int32)">
+            <summary>
+            Get parametric on volume
+            </summary>
+            <param name="resolution">resolution on both direction</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricGeometry.GetDataOnVolume">
+            <summary>
+            Get data of points for drawing with default resolution, change RESOLUTION for smoother volume
+            </summary>
+            <returns>Points on curve</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricGeometry.GetDataOnVolume(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Get data of points for drawing with user resolution, change RESOLUTION for smoother volume
+            </summary>
+            <param name="resolution1">resolution on first direction</param>
+            <param name="resolution2">resolution on second direction</param>
+            <param name="resolution3">resolution on third direction</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricGeometry.Draw(DEMSoft.Drawing.ViewerForm)">
+            <summary>
+            Draw volume
+            </summary>
+            <param name="form">form to draw</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricGeometry.DrawControlPoints(DEMSoft.Drawing.ViewerForm)">
+            <summary>
+            Draw control points
+            </summary>
+            <param name="form">form to draw</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricGeometry.DrawVolume(DEMSoft.Drawing.ViewerForm)">
+            <summary>
+            Draw volume
+            </summary>
+            <param name="form">form to draw</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricGeometry.DrawMesh(DEMSoft.Drawing.ViewerForm,System.Boolean)">
+            <summary>
+            Draw mesh (outline of knot) with many volume
+            </summary>
+            <param name="form">form to draw</param>
+            <param name="isSolid">Is faces draw?</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricGeometry.DrawKnots(DEMSoft.Drawing.ViewerForm)">
+            <summary>
+            Draw knots
+            </summary>
+            <param name="form">form to draw</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricGeometry.DrawTangent(DEMSoft.Drawing.ViewerForm,System.Double,System.Double,System.Double,System.Int32,System.Double)">
+            <summary>
+            Draw tangent vector on direction
+            </summary>
+            <param name="form">form to draw</param>
+            <param name="xi">first direction parameter</param>
+            <param name="eta">second direction parameter</param>
+            <param name="zeta">third direction parameter</param>
+            <param name="direction">tangent direction</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricGeometry.InsertKnot(System.Double,System.Int32,System.Int32)">
+            <summary>
+            Insert knot
+            </summary>
+            <param name="psiBar">parameter</param>
+            <param name="r">times of knot insertion</param>
+            <param name="dir">direction</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricGeometry.Split(System.Double,System.Int32)">
+            <summary>
+            Split volume into two volumes at knot parameter
+            </summary>
+            <param name="psiBar">parameter</param>
+            <returns>two volumes</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricGeometry.ExtractSurfaces(System.Double[],System.Int32)">
+            <summary>
+            Extract surfaces by parametric coordinate
+            </summary>
+            <param name="xi">array of parametric coordinate</param>
+            <param name="direction">index of direction on parametric coordinate</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricGeometry.ExtractSurfaces(System.Int32,System.Int32)">
+            <summary>
+            Extract surfaces by number of the inside surfaces
+            </summary>
+            <param name="numberOfInsideSurfaces">Number of the inside curves</param>
+            <param name="direction">index of direction on parametric coordinate</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricGeometry.hRefinement(System.Double[],System.Int32)">
+            <summary>
+            h-Refinement with new knot vector to be insert
+            </summary>
+            <param name="X">new knot vector to be insert</param>
+            <param name="dir">direction</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricGeometry.pRefinement(System.Int32,System.Int32)">
+            <summary>
+            p-Refinement
+            </summary>
+            <param name="t">Degree increasement</param>
+            <param name="dir">direction</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricGeometry.Clone">
+            <summary>
+            Copy volume
+            </summary>
+            <returns>copied volume</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricGeometry.TangentVectorVolumeOnDirection(System.Double,System.Double,System.Double,System.Int32)">
+            <summary>
+            Get tangent vector of volume in each direction
+            </summary>
+            <param name="xi">first parameter direction</param>
+            <param name="eta">second parameter direction</param>
+            <param name="zeta">third parameter direction</param>
+            <param name="direction">direction to get tangent</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricGeometry.SelectControlPointsByBox(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Select control points in region
+            </summary>
+            <param name="xLower">x-lower</param>
+            <param name="xUpper">x-upper</param>
+            <param name="yLower">y-lower</param>
+            <param name="yUpper">y-upper</param>
+            <param name="zLower">z-lower</param>
+            <param name="zUpper">z-upper</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.Abstract3DParametricGeometry.SelectControlPointInTwoEndAreas(System.Int32)">
+            <summary>
+            Select Control Point on 3D Geometric in two end areas
+            </summary>
+            <param name="index">[0]([1]) - first (last) line on u direction, [2]([3]) - first (last) line on v direction, [4]([5]) - first (last) line on w direction</param>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.NURBS.AbstractParametricBasisFunction">
+            <summary>
+            Abstract class pf parametric basis function
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.AbstractParametricBasisFunction.arrayBSplineBasis">
+            <summary>
+            Array of BSpline basis functions
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.AbstractParametricBasisFunction.dimension">
+            <summary>
+            Dimension of basis function (1-1D, 2-2D (Bivariate), 3-3D (Trivariate))
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.AbstractParametricBasisFunction.TOL">
+            <summary>
+            Tolorance to get knot at end knot vector
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricBasisFunction.#ctor(System.Int32)">
+            <summary>
+            Constructor abstract class
+            </summary>
+            <param name="d">dimension of basis function</param>
+        </member>
+        <member name="P:DEMSoft.NURBS.AbstractParametricBasisFunction.Dimension">
+            <summary>
+            Dimension of basis function
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricBasisFunction.Get1DParametricInBasisFunction(System.Int32)">
+            <summary>
+            Get B-Spline basis function to construct Parametric basis function
+            </summary>
+            <param name="direction">0:the first parametric coordinate, 1:the second, 2:the third</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricBasisFunction.Set1DParametricInBasisFunction(DEMSoft.NURBS.Abstract1DParametricBasisFunction,System.Int32)">
+            <summary>
+            Set B-Spline basis function to construct Parametric basis function
+            </summary>
+            <param name="b">B-Spline basis function</param>
+            <param name="direction">0:the first parametric coordinate, 1:the second, 2:the third</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricBasisFunction.GetDimension">
+            <summary>
+            Get dimension of basis function
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricBasisFunction.FindSpan(System.Double,System.Int32)">
+            <summary>
+            Find span of parametric on direction
+            </summary>
+            <param name="xi">parametric</param>
+            <param name="direction">direction</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricBasisFunction.Clone">
+            <summary>
+            Clone parametric basis function
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricBasisFunction.GetCountBasisFunction(System.Int32)">
+            <summary>
+            Get dimension
+            </summary>
+            <param name="direction">direction</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricBasisFunction.GetDegree(System.Int32)">
+            <summary>
+            Returns the polynomial degree.
+            </summary>
+            <param name="direction">dimension</param>
+            <returns>degree</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricBasisFunction.SetDegree(System.Int32,System.Int32)">
+            <summary>
+            Specifies the polynomial degree.
+            </summary>
+            <param name="p">degree</param>
+            <param name="direction">direction of parameter</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricBasisFunction.GetKnotVector(System.Int32)">
+            <summary>
+            Get knot vector in direcion
+            </summary>
+            <param name="direction">direction</param>
+            <returns>knot vector in direction</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricBasisFunction.SetKnotVector(System.Double[],System.Int32)">
+            <summary>
+            Set knot vector in direction
+            </summary>
+            <param name="kv">knot vector</param>
+            <param name="direction">direction</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricBasisFunction.SetKnotVector(DEMSoft.NURBS.KnotVector,System.Int32)">
+            <summary>
+            Set knot vector in direction
+            </summary>
+            <param name="kv">knot vector</param>
+            <param name="direction">direction</param>
+        </member>
+        <member name="T:DEMSoft.NURBS.AbstractParametricGeometry">
+            <summary>
+            Abstract parameter geometry class
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.AbstractParametricGeometry.basis">
+            <summary>
+            Basis function
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.AbstractParametricGeometry.dimension">
+            <summary>
+            dimension of geometry (1-curve, 2-surface, 3-volume)
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.AbstractParametricGeometry.isDrawControlPoint">
+            <summary>
+            Draw control point
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.AbstractParametricGeometry.isDrawMesh">
+            <summary>
+            Draw curve mesh
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.AbstractParametricGeometry.isDrawKnot">
+            <summary>
+            Draw knot
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.AbstractParametricGeometry.isDrawControlNet">
+            <summary>
+            Draw control net
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.AbstractParametricGeometry.isColorfulMeshFace">
+            <summary>
+            Draw colorful faces mesh
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.AbstractParametricGeometry.colorControlPoint">
+            <summary>
+            Color of control point
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.AbstractParametricGeometry.colorControlNet">
+            <summary>
+            Color of control network
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.AbstractParametricGeometry.colorKnot">
+            <summary>
+            Color of knot
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.AbstractParametricGeometry.colorCurve">
+            <summary>
+            Color of curve
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.AbstractParametricGeometry.colorTangent">
+            <summary>
+            Color of tangent vector
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.AbstractParametricGeometry.colorNormal">
+            <summary>
+            Color of normal vector
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.AbstractParametricGeometry.sizeControlPoint">
+            <summary>
+            Size of control point
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.AbstractParametricGeometry.sizeKnot">
+            <summary>
+            Size of knot
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.AbstractParametricGeometry.widthControlNet">
+            <summary>
+            Width of control network
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.AbstractParametricGeometry.widthCurve">
+            <summary>
+            Width of curve
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.AbstractParametricGeometry.widthVector">
+            <summary>
+            Width of tangent vector of curve
+            </summary>
+        </member>
+        <member name="F:DEMSoft.NURBS.AbstractParametricGeometry.opacity">
+            <summary>
+            Opacity factor to set geometry transperance
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricGeometry.#ctor(DEMSoft.NURBS.AbstractParametricBasisFunction)">
+            <summary>
+            Construct geometry
+            </summary>
+            <param name="basis">Basis functions of geometry</param>
+        </member>
+        <member name="P:DEMSoft.NURBS.AbstractParametricGeometry.Basis">
+            <summary>
+            Get and set basis function
+            </summary>
+        </member>
+        <member name="P:DEMSoft.NURBS.AbstractParametricGeometry.Dimension">
+            <summary>
+            Get and set dimension of geometry
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricGeometry.SetDimension(System.Int32)">
+            <summary>
+            Set dimension of geometry
+            </summary>
+            <param name="d">dimension geometry (1-curve, 2-surface, 3-volume)</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricGeometry.GetDimension">
+            <summary>
+            Get dimension of geometry
+            </summary>
+            <returns>dimension</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricGeometry.PointAt(System.Double[])">
+            <summary>
+            Point on geometry
+            </summary>
+            <param name="xi">array of parametric</param>
+            <returns>Point on geometry</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricGeometry.GetParametricOnGeometry(System.Int32[])">
+            <summary>
+            Get parametric on geometry [dimension][resolution
+            </summary>
+            <param name="resolution1">resolution in first direction</param>
+            <param name="resolution2">resolution in second direction</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricGeometry.Draw(DEMSoft.Drawing.ViewerForm)">
+            <summary>
+            Draw surface
+            </summary>
+            <param name="form">form to draw</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricGeometry.DrawControlPoints(DEMSoft.Drawing.ViewerForm)">
+            <summary>
+            Draw control points
+            </summary>
+            <param name="form">form to draw</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricGeometry.DrawMesh(DEMSoft.Drawing.ViewerForm,System.Boolean)">
+            <summary>
+            Draw mesh (outline of knot) with many face
+            </summary>
+            <param name="form">form to draw</param>
+            <param name="isDrawSolid">Is inside draw?</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricGeometry.DrawKnots(DEMSoft.Drawing.ViewerForm)">
+            <summary>
+            Draw knots
+            </summary>
+            <param name="form">form to draw</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricGeometry.InsertKnot(System.Double,System.Int32,System.Int32)">
+            <summary>
+            Insert knot
+            </summary>
+            <param name="psiBar">parameter</param>
+            <param name="r">times of knot insertion</param>
+            <param name="dir">direction</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricGeometry.hRefinement(System.Double[],System.Int32)">
+            <summary>
+            h-Refinement with new knot vector to be insert
+            </summary>
+            <param name="X">new knot vector to be insert</param>
+            <param name="dir">direction</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricGeometry.hRefinement(System.Int32,System.Int32)">
+            <summary>
+            h-Refinement with number of mid-point to be insert
+            </summary>
+            <param name="numMidPoint">number of mid points</param>
+            <param name="dir">direction</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricGeometry.pRefinement(System.Int32,System.Int32)">
+            <summary>
+            p-Refinement
+            </summary>
+            <param name="t">Degree increasement</param>
+            <param name="dir">direction</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricGeometry.SetDegreeOnAllDirections(System.Int32)">
+            <summary>
+            Set same degree on all directions
+            </summary>
+            <param name="t"></param>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricGeometry.Clone">
+            <summary>
+            Clone geometry
+            </summary>
+            <returns>Cloned geometry</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricGeometry.Copy(System.Double,System.Double,System.Double,System.Int32)">
+            <summary>
+            Copy geometry to many samples
+            </summary>
+            <param name="dx">x-increasement</param>
+            <param name="dy">x-increasement</param>
+            <param name="dz">x-increasement</param>
+            <param name="totalSamples">Total of samples</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricGeometry.Move(System.Double,System.Double,System.Double)">
+            <summary>
+            Move this geometry
+            </summary>
+            <param name="dx">x-increasement</param>
+            <param name="dy">y-increasement</param>
+            <param name="dz">z-increasement</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricGeometry.SelectControlPointsByBox(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Select control points in box region
+            </summary>
+            <param name="xLower">x-lower</param>
+            <param name="xUpper">x-upper</param>
+            <param name="yLower">y-lower</param>
+            <param name="yUpper">y-upper</param>
+            <param name="zLower">z-lower</param>
+            <param name="zUpper">z-upper</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricGeometry.SelectControlPointsBySphere(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Select control points in sphere region
+            </summary>
+            <param name="xCentre">x-coord centre</param>
+            <param name="yCentre">y-coord centre</param>
+            <param name="zCentre">z-coord centre</param>
+            <param name="radius">radius</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricGeometry.SelectAllControlPoints">
+            <summary>
+            Select control points in region
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricGeometry.CheckCompletedMatchGeometry(DEMSoft.NURBS.AbstractParametricGeometry)">
+            <summary>
+            Check match of two geometries same dimension
+            </summary>
+            <param name="geoOther">other geometry same dimension</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.AbstractParametricGeometry.GetCompletedMatchInterfaceGeometry(DEMSoft.NURBS.AbstractParametricGeometry)">
+            <summary>
+            Check pair of geometries which has interfaces
+            </summary>
+            <param name="geoOther"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.ActionOnGeometry.Do">
+            <summary>
+            Do translation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.NURBS.BernsteinBasisFunction">
+            <summary>
+            B-SPline Basis function
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.BernsteinBasisFunction.#ctor(System.Int32)">
+            <summary>
+            Construct B-Spline basis function
+            </summary>
+            <param name="p">degree</param>
+            <param name="kv">knot vector [0;0;0;1;2;3;4;4;5;5;5]</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.BernsteinBasisFunction.GetValueBasisFunction(System.Double,System.Int32)">
+            <summary>
+            Returns value of the specified shape function.
+            </summary>
+            <param name="xi">parameter</param>
+            <param name="idx">index of the shape function in global coordination</param>
+            <returns>value of one basis function</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.BernsteinBasisFunction.GetValueBasisFunctions(System.Double)">
+            <summary>
+            Returns value of all basis functions.
+            </summary>
+            <param name="xi">parameter</param>
+            <returns>all basis functions</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.BernsteinBasisFunction.GetAllValueDegreeBasisFunctions(System.Double)">
+            <summary>
+            Return all nonzero basis functions of all degrees from 0 up to p, 
+            N[j][i] ith-degree basis function, N[span-i+j,i], 
+            where 0<!--<=-->i<!--<=-->p and 0<!--<=-->j<!--<=-->i
+            </summary>
+            <param name="xi">parameter</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.BernsteinBasisFunction.GetDerivativeBasisFunctions(System.Double,System.Int32)">
+            <summary>
+            Compute derivative n(th) level [nth,local index basis]
+            </summary>
+            <param name="xi">parametric</param>
+            <param name="n">nth derivative (n less than p)</param>
+            <returns>All derivertive level of basis functions [nth,idx basis]</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.BernsteinBasisFunction.GetDerivativeBasisFunction(System.Double,System.Int32,System.Int32)">
+            <summary>
+            Compute derivative n(th) level
+            </summary>
+            <param name="xi">parameter</param>
+            <param name="n">nth derivative</param>
+            <param name="idx">index of basis function in global coordination</param>
+            <returns>All derivertive level of one basis function</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.BernsteinBasisFunction.Clone">
+            <summary>
+            Clone of B-Spline basis function
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.NURBS.BivariateBernsteinBasisFunction">
+            <summary>
+            Bi B-Spline basis function
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.BivariateBernsteinBasisFunction.#ctor(DEMSoft.NURBS.BernsteinBasisFunction,DEMSoft.NURBS.BernsteinBasisFunction)">
+            <summary>
+            Construct Bivariate B-Spline basis function
+            </summary>
+            <param name="basisN">Basis function dimension 1</param>
+            <param name="basisM">Basis function dimension 2</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.BivariateBernsteinBasisFunction.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Construct Bivariate B-Spline basis function
+            </summary>
+            <param name="p">Degree direction 1</param>
+            <param name="q">Degree direction 2</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.BivariateBernsteinBasisFunction.Plot">
+            <summary>
+            Plot all basis functions or derivertive of basis functions
+            </summary>
+        </member>
+        <member name="T:DEMSoft.NURBS.BivariateBSplineBasisFunction">
+            <summary>
+            Bi B-Spline basis function
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.BivariateBSplineBasisFunction.#ctor(DEMSoft.NURBS.BSplineBasisFunction,DEMSoft.NURBS.BSplineBasisFunction)">
+            <summary>
+            Construct Bivariate B-Spline basis function
+            </summary>
+            <param name="basisN">Basis function dimension 1</param>
+            <param name="basisM">Basis function dimension 2</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.BivariateBSplineBasisFunction.#ctor(System.Int32,System.Double[],System.Int32,System.Double[])">
+            <summary>
+            Construct Bivariate B-Spline basis function
+            </summary>
+            <param name="p">Degree direction 1</param>
+            <param name="kv1">Knot vector direction 1</param>
+            <param name="q">Degree direction 2</param>
+            <param name="kv2">Knot vector direction 1</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.BivariateBSplineBasisFunction.#ctor(System.Int32,DEMSoft.NURBS.KnotVector,System.Int32,DEMSoft.NURBS.KnotVector)">
+            <summary>
+            Construct Bivariate B-Spline basis function
+            </summary>
+            <param name="p">Degree direction 1</param>
+            <param name="kv1">Knot vector direction 1</param>
+            <param name="q">Degree direction 2</param>
+            <param name="kv2">Knot vector direction 1</param>
+        </member>
+        <member name="T:DEMSoft.NURBS.BivariateNURBSBasisFunction">
+            <summary>
+            Bi B-Spline basis function
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.BivariateNURBSBasisFunction.#ctor(DEMSoft.NURBS.BSplineBasisFunction,DEMSoft.NURBS.BSplineBasisFunction,System.Double[0:,0:])">
+            <summary>
+            Construct Bivariate NURBS basis function
+            </summary>
+            <param name="basisN">Basis function dimension 1</param>
+            <param name="basisM">Basis function dimension 2</param>
+            <param name="weights">weights</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.BivariateNURBSBasisFunction.#ctor(System.Int32,System.Double[],System.Int32,System.Double[],System.Double[0:,0:])">
+            <summary>
+            Construct Bivariate NURBS basis function
+            </summary>
+            <param name="p">Degree direction 1</param>
+            <param name="kv1">Knot vector direction 1</param>
+            <param name="q">Degree direction 2</param>
+            <param name="kv2">Knot vector direction 1</param>
+            <param name="weights">weights</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.BivariateNURBSBasisFunction.#ctor(System.Int32,DEMSoft.NURBS.KnotVector,System.Int32,DEMSoft.NURBS.KnotVector,System.Double[0:,0:])">
+            <summary>
+            Construct Bivariate NURBS basis function
+            </summary>
+            <param name="p">Degree direction 1</param>
+            <param name="kv1">Knot vector direction 1</param>
+            <param name="q">Degree direction 2</param>
+            <param name="kv2">Knot vector direction 1</param>
+            <param name="weights">weights</param>
+        </member>
+        <member name="P:DEMSoft.NURBS.BivariateNURBSBasisFunction.Weights">
+            <summary>
+            Get and set weights
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.BivariateNURBSBasisFunction.GetWeights">
+            <summary>
+            Get weights
+            </summary>
+            <returns>weights</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.BivariateNURBSBasisFunction.GetValueBivariateBasisFunction(System.Double,System.Double,System.Int32,System.Int32)">
+            <summary>
+            Value of N(i,xi)*M(j,eta)
+            </summary>
+            <param name="i">index basis function at first direction in global coordinate</param>
+            <param name="xi">first parameter</param>
+            <param name="j">index basis function at second direction in global coordinate</param>
+            <param name="eta">second parameter</param>
+            <returns>value of bivariate basis function</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.BivariateNURBSBasisFunction.GetValueBivariateBasisFunctions(System.Double,System.Double)">
+            <summary>
+            All of values of Ni(i,xi)*Mi(j,eta) in span
+            </summary>
+            <param name="xi">parameter in direction xi</param>
+            <param name="eta">parameter in direction eta</param>
+            <returns>[p+1,q+1] value</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.BivariateNURBSBasisFunction.GetValueBezierExtractionBivariateBasisFunctions(System.Double,System.Double,System.Double[0:,0:][0:,0:])">
+            <summary>
+            Compute Bivariate NURBS basis functions by Bezier Extraction
+            </summary>
+            <param name="xi">xi-coordination</param>
+            <param name="eta">eta-coordination</param>
+            <param name="C">Extraction operator element matrix, compute from NURBSVolume</param>
+            <returns></returns>        
+        </member>
+        <member name="M:DEMSoft.NURBS.BivariateNURBSBasisFunction.GetDerivativeBezierExtractionBasisFunctions(System.Double,System.Double,System.Double[0:,0:][0:,0:])">
+            <summary>
+            Compute derivative of bivariate NURBS basis functions by Bezier Extraction [dxi][p,q]
+            </summary>
+            <param name="xi">xi-coordination</param>
+            <param name="eta">eta-coordination</param>
+            <param name="C"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.BivariateNURBSBasisFunction.GetDerivativeBivariateBasisFunction(System.Double,System.Double,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Get value of derivative bivariate basis function [dth,dth]
+            </summary>
+            <param name="i">index basis function at first direction in global coordinate</param>
+            <param name="xi">first parameter</param>
+            <param name="j">index basis function at second direction in global coordinate</param>
+            <param name="eta">second parameter</param>
+            <param name="d">dth derivative on two directions</param>
+            <returns>value of derivative</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.BivariateNURBSBasisFunction.GetDerivativeBivariateBasisFunctions(System.Double,System.Double,System.Int32)">
+            <summary>
+            Get derivative bivariate lenght [p+1,q+1][kth,lth]
+            </summary>
+            <param name="xi">first direction parameter</param>
+            <param name="eta">first direction parameter</param>
+            <param name="d">dth derivative on two directions</param>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.NURBS.BSplineBasisFunction">
+            <summary>
+            B-SPline Basis function
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.BSplineBasisFunction.#ctor(System.Int32,System.Double[])">
+            <summary>
+            Construct B-Spline basis function
+            </summary>
+            <param name="p">degree</param>
+            <param name="kv">knot vector [0;0;0;1;2;3;4;4;5;5;5]</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.BSplineBasisFunction.#ctor(System.Int32,DEMSoft.NURBS.KnotVector)">
+            <summary>
+            Construct B-Spline basis function
+            </summary>
+            <param name="p">degree</param>
+            <param name="kv">knot vector [0;0;0;1;2;3;4;4;5;5;5]</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.BSplineBasisFunction.GetValueBasisFunction(System.Double,System.Int32)">
+            <summary>
+            Returns value of the specified shape function.
+            </summary>
+            <param name="xi">parameter</param>
+            <param name="idx">index of the shape function in global coordination</param>
+            <returns>value of one basis function</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.BSplineBasisFunction.GetValueBasisFunctions(System.Double)">
+            <summary>
+            Returns value of all basis functions.
+            </summary>
+            <param name="xi">parameter</param>
+            <returns>all basis functions</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.BSplineBasisFunction.GetAllValueDegreeBasisFunctions(System.Double)">
+            <summary>
+            Return all nonzero basis functions of all degrees from 0 up to p, 
+            N[j][i] ith-degree basis function, N[span-i+j,i], 
+            where 0<!--<=-->i<!--<=-->p and 0<!--<=-->j<!--<=-->i
+            </summary>
+            <param name="xi">parameter</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.BSplineBasisFunction.GetDerivativeBasisFunctions(System.Double,System.Int32)">
+            <summary>
+            Compute derivative n(th) level [nth,local index basis]
+            </summary>
+            <param name="xi">parametric</param>
+            <param name="n">nth derivative (n less than p)</param>
+            <returns>All derivertive level of basis functions [nth,idx basis]</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.BSplineBasisFunction.GetDerivativeBasisFunction(System.Double,System.Int32,System.Int32)">
+            <summary>
+            Compute derivative n(th) level
+            </summary>
+            <param name="xi">parameter</param>
+            <param name="n">nth derivative</param>
+            <param name="idx">index of basis function in global coordination</param>
+            <returns>All derivertive level of one basis function</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.BSplineBasisFunction.Clone">
+            <summary>
+            Clone of B-Spline basis function
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.NURBS.BSplineCurve">
+            <summary>
+            Geometry B-Spline curve
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.BSplineCurve.#ctor(System.Int32,System.Double[],DEMSoft.NURBS.ControlPoint[])">
+            <summary>
+            Construct BSpline curve with knot
+            </summary>
+            <param name="p">Degree</param>
+            <param name="kv">Knot Vector</param>
+            <param name="cps">Control points</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.BSplineCurve.#ctor(System.Int32,DEMSoft.NURBS.KnotVector,DEMSoft.NURBS.ControlPoint[])">
+            <summary>
+            Construct BSpline curve with knot
+            </summary>
+            <param name="p">Degree</param>
+            <param name="kv">Knot Vector</param>
+            <param name="cps">Control points</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.BSplineCurve.Clone">
+            <summary>
+            Copy B-Spline surface
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.NURBS.BSplineSurface">
+            <summary>
+            B-Spline surface class
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.BSplineSurface.#ctor(System.Int32,System.Double[],System.Int32,System.Double[],DEMSoft.NURBS.ControlPoint[0:,0:])">
+            <summary>
+            Construct BSpline surface with knot
+            </summary>
+            <param name="p">degree first direction</param>
+            <param name="kv1">knot vector first direction</param>
+            <param name="q">degree second direction</param>
+            <param name="kv2">knot vector second direction</param>
+            <param name="cps">Control points</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.BSplineSurface.#ctor(System.Int32,DEMSoft.NURBS.KnotVector,System.Int32,DEMSoft.NURBS.KnotVector,DEMSoft.NURBS.ControlPoint[0:,0:])">
+            <summary>
+            Construct BSpline surface with knot
+            </summary>
+            <param name="p">degree first direction</param>
+            <param name="kv1">knot vector first direction</param>
+            <param name="q">degree second direction</param>
+            <param name="kv2">knot vector second direction</param>
+            <param name="cps">Control points</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.BSplineSurface.Clone">
+            <summary>
+            Copy B-Spline surface
+            </summary>
+            <returns>copied B-Spline surface</returns>
+        </member>
+        <member name="T:DEMSoft.NURBS.BSplineVolume">
+            <summary>
+            B-Spline surface class
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.BSplineVolume.#ctor(System.Int32,System.Double[],System.Int32,System.Double[],System.Int32,System.Double[],DEMSoft.NURBS.ControlPoint[0:,0:,0:])">
+            <summary>
+            Construct BSpline surface with knot
+            </summary>
+            <param name="p">degree first direction</param>
+            <param name="kv1">knot vector first direction</param>
+            <param name="q">degree second direction</param>
+            <param name="kv2">knot vector second direction</param>
+            <param name="cps">Control points</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.BSplineVolume.#ctor(System.Int32,DEMSoft.NURBS.KnotVector,System.Int32,DEMSoft.NURBS.KnotVector,System.Int32,DEMSoft.NURBS.KnotVector,DEMSoft.NURBS.ControlPoint[0:,0:,0:])">
+            <summary>
+            Construct BSpline surface with knot
+            </summary>
+            <param name="p">degree first direction</param>
+            <param name="kv1">knot vector first direction</param>
+            <param name="q">degree second direction</param>
+            <param name="kv2">knot vector second direction</param>
+            <param name="cps">Control points</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.BSplineVolume.Clone">
+            <summary>
+            Copy B-Spline surface
+            </summary>
+            <returns>copied B-Spline surface</returns>
+        </member>
+        <member name="T:DEMSoft.NURBS.ControlPoint">
+            <summary>
+            Control point in IGA with 4D coordinations
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.ControlPoint.#ctor(System.Double,System.Double)">
+            <summary>
+            Constructor control point in 2D
+            </summary>
+            <param name="x">X coord</param>
+            <param name="y">Y coord</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.ControlPoint.#ctor(System.Double,System.Double,System.Double)">
+            <summary>
+            Construct control point in 3D
+            </summary>
+            <param name="x">X coord</param>
+            <param name="y">Y coord</param>
+            <param name="z">Z coord</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.ControlPoint.#ctor(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Construct control point in 4D for NURBS
+            </summary>
+            <param name="x">X coord</param>
+            <param name="y">Y coord</param>
+            <param name="z">Z coord</param>
+            <param name="w">weight</param>
+        </member>
+        <member name="P:DEMSoft.NURBS.ControlPoint.ID">
+            <summary>
+            Get and set id of control point
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.ControlPoint.GetCoordinate">
+            <summary>
+            Get coordinate
+            </summary>
+            <returns>coordinate</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.ControlPoint.GetCoordinate(System.Int32)">
+            <summary>
+            Get coordinate component
+            </summary>
+            <param name="i">dimension</param>
+            <returns>component</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.ControlPoint.SetCoordinate(System.Int32,System.Double)">
+            <summary>
+            Set coordinate in 1 component
+            </summary>
+            <param name="i">index component</param>
+            <param name="value">value</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.ControlPoint.SetCoordinate(System.Double[])">
+            <summary>
+            Set coordinates component
+            </summary>
+            <param name="value">Array of value</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.ControlPoint.Clone">
+            <summary>
+            Copy control point
+            </summary>
+            <returns>new control point</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.ControlPoint.CopyCoordinationNURBSToBSpline">
+            <summary>
+            Copy control point from NURBS to B-Spline
+            </summary>
+            <returns>new B-Spline control point</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.ControlPoint.CopyCoordinationBSplineToNURBS">
+            <summary>
+            Copy control point from B-Spline to NURBS
+            </summary>
+            <returns>new NURBS control point</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.ControlPoint.DistanceTo(DEMSoft.NURBS.ControlPoint)">
+            <summary>
+            Compute distance between 2 control points. Do not include weight.
+            </summary>
+            <param name="c">second control point</param>
+            <returns>distance of two points</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.ControlPoint.Distance4D(DEMSoft.NURBS.ControlPoint)">
+            <summary>
+            Compute 4D distance between 2 control points (x1,y1,z1,w1) - (x2,y2,z2,w2)
+            </summary>
+            <param name="c">second control point</param>
+            <returns>distance of two points</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.ControlPoint.op_Multiply(System.Double,DEMSoft.NURBS.ControlPoint)">
+            <summary>
+            Multiply coordination of control point with factor CpNew = alpha * Cp
+            </summary>
+            <param name="a">factor</param>
+            <param name="cp">control point</param>
+            <returns>new control point</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.ControlPoint.op_Addition(DEMSoft.NURBS.ControlPoint,DEMSoft.NURBS.ControlPoint)">
+            <summary>
+            Sum coordinate of control point with other coordinate of control point
+            </summary>
+            <param name="cp1">control point 1</param>
+            <param name="cp2">control point 2</param>
+            <returns>new control point</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.ControlPoint.op_Subtraction(DEMSoft.NURBS.ControlPoint,DEMSoft.NURBS.ControlPoint)">
+            <summary>
+            Substract coordinate of control point with other coordinate of control point
+            </summary>
+            <param name="cp1">control point 1</param>
+            <param name="cp2">control point 2</param>
+            <returns>new control point</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.ControlPoint.op_Division(DEMSoft.NURBS.ControlPoint,System.Double)">
+            <summary>
+            Substract coordinate of control point with other coordinate of control point
+            </summary>
+            <param name="cp1">control point 1</param>
+            <param name="a">factor to be divide</param>
+            <returns>new control point</returns>
+        </member>
+        <member name="P:DEMSoft.NURBS.ControlPoint.Item(System.Int32)">
+            <summary>
+            Index of coordinations
+            </summary>
+            <param name="idx"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.ControlPoint.IsCoincident(DEMSoft.NURBS.ControlPoint)">
+            <summary>
+            Check coincident with other control point
+            </summary>
+            <param name="cp">other control point</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.ControlPoint.IsInsideRegion(DEMSoft.NURBS.IRegion)">
+            <summary>
+            Check control point inside a region
+            </summary>
+            <param name="loc">region</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.ControlPoint.SetUGlobal(MathNet.Numerics.LinearAlgebra.Vector{System.Double})">
+            <summary>
+            Set value of displacement of control point from global displacement
+            </summary>
+            <param name="uGlobal">u global get from u=K^-1*f</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.ControlPoint.GetULocal(System.Int32)">
+            <summary>
+            Get result
+            </summary>
+            <param name="idx">index</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.GeometryCreator.CreateCylindricalNURBSVolume(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Create an cylindrical NURBS volume
+            </summary>
+            <param name="x0">x-coordination of center point of an cylindrical</param>
+            <param name="y0">y-coordination of center point of an cylindrical</param>
+            <param name="z0">z-coordination of center point of an cylindrical</param>
+            <param name="Ri">inner radius of an cylindrical</param>
+            <param name="Ro">outer radius of an cylindrica</param>
+            <param name="L">length of cylindrical</param>
+            <param name="alpha">angle of an cylindrical in degree, alpha=360 degree is full cylindrical by default</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.GeometryCreator.CreateBlockNURBSVolume(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Create a block NURBS volume
+            </summary>
+            <param name="x1">x-coordination of first corrner point of rectangle</param>
+            <param name="y1">y-coordination of first corrner point of rectangle</param>
+            <param name="z1">z-coordination of first corrner point of rectangle</param>
+            <param name="x2">x-coordination of second corrner point of rectangle</param>
+            <param name="y2">y-coordination of second corrner point of rectangle</param>
+            <param name="z2">z-coordination of second corrner point of rectangle</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.GeometryCreator.CreateAnnularNURBSSurface(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Create an annular NURBS surface
+            </summary>
+            <param name="x0">x-coordination of center point of an annular</param>
+            <param name="y0">y-coordination of center point of an annular</param>
+            <param name="z0">y-coordination of center point of an annular</param>
+            <param name="Ri">inner radius of an annular</param>
+            <param name="Ro">outer radius of an annular</param>
+            <param name="alpha">angle of an annular in degree, alpha=360 degree is full cylindrical by default</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.GeometryCreator.CreateQuadrilateralNURBSSurface(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Create a quadrilateral NURBS surface
+            </summary>
+            <param name="x1">x-coordination of left-bottom corner point of quadrilateral</param>
+            <param name="y1">y-coordination of left-bottom corner point of quadrilateral</param>
+            <param name="z1">z-coordination of left-bottom corner point of quadrilateral</param>
+            <param name="x2">x-coordination of right-bottom corner point of quadrilateral</param>
+            <param name="y2">y-coordination of right-bottom corner point of quadrilateral</param>
+            <param name="z2">z-coordination of right-bottom corner point of quadrilateral</param>
+            <param name="x3">x-coordination of right-top corner point of quadrilateral</param>
+            <param name="y3">y-coordination of right-top corner point of quadrilateral</param>
+            <param name="z3">z-coordination of right-top corner point of quadrilateral</param>
+            <param name="x4">x-coordination of left-top corner point of quadrilateral</param>
+            <param name="y4">y-coordination of left-top corner point of quadrilateral</param>
+            <param name="z4">z-coordination of left-top corner point of quadrilateral</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.GeometryCreator.CreateRectangleNURBSSurface(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Create a rectangle NURBS surface
+            </summary>
+            <param name="x1">x-coordination of first corrner point of rectangle</param>
+            <param name="y1">y-coordination of first corrner point of rectangle</param>
+            <param name="x2">x-coordination of second corrner point of rectangle</param>
+            <param name="y2">y-coordination of second corrner point of rectangle</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.GeometryCreator.CreateStraightNURBSCurve(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Create an straight NURBS curve
+            </summary>
+            <param name="x1">x-coordination of first point</param>
+            <param name="y1">y-coordination of first point</param>
+            <param name="z1">z-coordination of first point</param>
+            <param name="x2">x-coordination of second point</param>
+            <param name="y2">y-coordination of second point</param>
+            <param name="z2">z-coordination of second point</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.GeometryCreator.CreateArcNURBSCurve(System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Create an arc NURBS curve
+            </summary>
+            <param name="x0">x-coordination of center point of Arc</param>
+            <param name="y0">y-coordination of center point of Arc</param>
+            <param name="x1">x-coordination of first point of Arc</param>
+            <param name="y1">y-coordination of first point of Arc</param>
+            <param name="thetaDegree">angle of arc in degree</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.GeometryCreator.PointToLine(System.Double[],System.Double[],System.Double[])">
+            <summary>
+            Projects a point to a line.
+            </summary>
+            <param name="origin_of_rotation"></param>
+            <param name="rotation_axis_vector">Vector defining the direction of the rotation axis.</param>
+            <param name="starting_point"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.GeometryCreator.Intersect3DLines(DEMSoft.NURBS.ControlPoint,MathNet.Numerics.LinearAlgebra.Vector{System.Double},DEMSoft.NURBS.ControlPoint,MathNet.Numerics.LinearAlgebra.Vector{System.Double})">
+            <summary>
+            Intersects two three-dimensional lines.
+            </summary>
+            <param name="P1"></param>
+            <param name="T1"></param>
+            <param name="P2"></param>
+            <param name="T2"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.NURBS.KnotVector">
+            <summary>
+            Knot vector
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.KnotVector.#ctor(System.Double[])">
+            <summary>
+            Construct knot vector
+            </summary>
+            <param name="kv">knot vector [0;0;0;1;2;3;4;4;5;5;5]</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.KnotVector.#ctor(System.Collections.Generic.List{System.Double})">
+            <summary>
+            Construct knot vector
+            </summary>
+            <param name="knotVector">knot vector [0;0;0;1;2;3;4;4;5;5;5]</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.KnotVector.Clone">
+            <summary>
+            Clone knot vector
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.KnotVector.InsertKnot(System.Double)">
+            <summary>
+            Insert knot
+            </summary>
+            <param name="knot">knot</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.KnotVector.InsertKnot(System.Int32,System.Double)">
+            <summary>
+            Insert knot
+            </summary>
+            <param name="index">index</param>
+            <param name="knot">knot</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.KnotVector.RemoveAt(System.Int32)">
+            <summary>
+            Remove knot in knot vector
+            </summary>
+            <param name="index">index of knot to be removed</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.KnotVector.GetKnot(System.Int32)">
+            <summary>
+            Get knot
+            </summary>
+            <param name="index">index</param>
+            <returns>knot</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.KnotVector.SetKnot(System.Int32,System.Double)">
+            <summary>
+            Set knot
+            </summary>
+            <param name="index">index</param>
+            <param name="k">knot value</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.KnotVector.ToArray">
+            <summary>
+            Get knot vector
+            </summary>
+            <returns>knot vector</returns>
+        </member>
+        <member name="P:DEMSoft.NURBS.KnotVector.Count">
+            <summary>
+            number of element of knot
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.KnotVector.FindSpan(System.Double,System.Int32)">
+            <summary>
+            Find span at parameter
+            </summary>
+            <param name="xi">parameter</param>
+            <param name="p">degree</param>
+            <returns>index of basis functions nonzero</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.KnotVector.FindK(System.Double)">
+            <summary>
+            Find first index psiBar appear
+            </summary>
+            <param name="psiBar">psi in knot vector</param>
+            <returns>first index in knot vector</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.KnotVector.FindS(System.Double)">
+            <summary>
+            Find multiplicity of knot
+            </summary>
+            <param name="knot">knot</param>
+            <returns>multiplicity</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.KnotVector.GetKnotVectorNoMultiplicity">
+            <summary>
+            Get knot vector no multiplicity
+            </summary>
+            <returns>knot vector no multiplicity</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.KnotVector.GetKnotVector">
+            <summary>
+            Get knot vector
+            </summary>
+            <returns>List of double knot vector</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.KnotVector.IsContaint(System.Double)">
+            <summary>
+            Check to containt parameter in knot vector
+            </summary>
+            <param name="xi">parameter</param>
+            <returns>boolean</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.KnotVector.Union(DEMSoft.NURBS.KnotVector)">
+            <summary>
+            Union two knotvectors
+            </summary>
+            <param name="kv2">second knot vector to be union</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.KnotVector.Substract(DEMSoft.NURBS.KnotVector)">
+            <summary>
+            Substract 2 knotvector
+            </summary>
+            <param name="kv2">second knot vector</param>
+            <returns></returns>
+        </member>
+        <member name="P:DEMSoft.NURBS.KnotVector.Item(System.Int32)">
+            <summary>
+            Get knot by index kv[i]
+            </summary>
+            <param name="index">index</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.KnotVector.ScaleFitIntoInterval(System.Double,System.Double)">
+            <summary>
+            Scale Interval fit into [lower,upper]
+            </summary>
+            <param name="lower">new lower interval</param>
+            <param name="upper">new upper interval</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.KnotVector.IsMatch(DEMSoft.NURBS.KnotVector)">
+            <summary>
+            Check two intervals is matched
+            </summary>
+            <param name="kv2">second knot vector to be checked</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.KnotVector.Equals(DEMSoft.NURBS.KnotVector)">
+            <summary>
+            Check two intervals is matched
+            </summary>
+            <param name="kv2">second knot vector to be checked</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.KnotVector.GetKnotAtTwoEnds(System.Int32)">
+            <summary>
+            Get knot at two ends of knot vector
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.NURBS.NURBSBasisFunction">
+            <summary>
+            NURBS Basis function
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSBasisFunction.#ctor(System.Int32,System.Double[],System.Double[])">
+            <summary>
+            Construct NURBS basis function
+            </summary>
+            <param name="p">degree</param>
+            <param name="kv">knot vector [0;0;0;1;2;3;4;4;5;5;5]</param>
+            <param name="weights">weights</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSBasisFunction.#ctor(System.Int32,DEMSoft.NURBS.KnotVector,System.Double[])">
+            <summary>
+            Construct NURBS basis function
+            </summary>
+            <param name="p">degree</param>
+            <param name="kv">knot vector [0;0;0;1;2;3;4;4;5;5;5]</param>
+            <param name="weights">weights</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSBasisFunction.GetValueBasisFunction(System.Double,System.Int32)">
+            <summary>
+            Returns value of the specified shape function.
+            </summary>
+            <param name="xi">parameter</param>
+            <param name="idx">index of the shape function in global coordination</param>
+            <returns>value of one basis function</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSBasisFunction.GetValueBezierExtractionBasisFunctions(System.Double,System.Double[0:,0:][])">
+            <summary>
+            Compute NURBS basis functions by Bezier Extraction
+            </summary>
+            <param name="xi">xi-coordination in NURBS parametric</param>
+            <param name="C">Extraction operator element matrix, compute from NURBSVolume</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSBasisFunction.GetValueBasisFunctions(System.Double)">
+            <summary>
+            Returns value of all basis functions.
+            </summary>
+            <param name="xi">parameter</param>
+            <returns>all basis functions</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSBasisFunction.GetDerivativeBasisFunction(System.Double,System.Int32,System.Int32)">
+            <summary>
+            Compute derivative n(th) level
+            </summary>
+            <param name="xi">parametric</param>
+            <param name="n">nth derivative (n less than p)</param>
+            <param name="idx">index of basis function in global coordination</param>
+            <returns>All derivertive level of one basis function</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSBasisFunction.GetDerivativeBasisFunctions(System.Double,System.Int32)">
+            <summary>
+            Compute derivative n(th) level
+            </summary>
+            <param name="xi">parametric</param>
+            <param name="n">nth derivative (n less than p)</param>
+            <returns>All derivertive level of basis functions [nth,idx basis]</returns>
+        </member>
+        <member name="P:DEMSoft.NURBS.NURBSBasisFunction.Weights">
+            <summary>
+            Get and set weights
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSBasisFunction.GetWeights">
+            <summary>
+            Get weights
+            </summary>
+            <returns>weights</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSBasisFunction.Clone">
+            <summary>
+            Clone of NURBS basis function
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.NURBS.NURBSCurve">
+            <summary>
+            Geometry NURBS curve
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSCurve.#ctor(System.Int32,System.Double[],DEMSoft.NURBS.ControlPoint[],System.Double[])">
+            <summary>
+            Construct NURBS curve with knot
+            </summary>
+            <param name="p">Degree</param>
+            <param name="kv">Knot Vector</param>
+            <param name="cps">Control points</param>
+            <param name="weights">weights</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSCurve.#ctor(System.Int32,DEMSoft.NURBS.KnotVector,DEMSoft.NURBS.ControlPoint[],System.Double[])">
+            <summary>
+            Construct NURBS curve with knot
+            </summary>
+            <param name="p">Degree</param>
+            <param name="kv">Knot Vector</param>
+            <param name="cps">Control points</param>
+            <param name="weights">weights</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSCurve.MakeNURBSControlPoint">
+            <summary>
+            Copy weights to 4th coordination
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSCurve.Clone">
+            <summary>
+            Copy NURBS curve
+            </summary>
+            <returns>copied NURBS curve</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSCurve.CreateNURBSArc(System.Double,DEMSoft.NURBS.ControlPoint,System.Double[],System.Double[])">
+            <summary>
+            Build an arc from NURBS somewhere in space, but orthogonal to a straight line defined by origin and vector.
+            </summary>
+            <param name="thetaDegree">Angle of rotation in degrees</param>
+            <param name="startingPoint">Starting point of the arc</param>
+            <param name="origin_of_rotation">Origin of vector</param>
+            <param name="rotation_axis_vector">A unit length vector that defines an axis of rotation</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSCurve.PointToLine(System.Double[],System.Double[],DEMSoft.NURBS.ControlPoint)">
+            <summary>
+            Projects a point to a line.
+            </summary>
+            <param name="origin_of_rotation"></param>
+            <param name="rotation_axis_vector">Vector defining the direction of the rotation axis.</param>
+            <param name="starting_point"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSCurve.Intersect3DLines(DEMSoft.NURBS.ControlPoint,MathNet.Numerics.LinearAlgebra.Double.DenseVector,DEMSoft.NURBS.ControlPoint,MathNet.Numerics.LinearAlgebra.Double.DenseVector)">
+            <summary>
+            Intersects two three-dimensional lines.
+            </summary>
+            <param name="P1"></param>
+            <param name="T1"></param>
+            <param name="P2"></param>
+            <param name="T2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSCurve.CreateRevolvedSurface(System.Double,System.Double[],System.Double[])">
+            <summary>
+            Construct a NURBS surface of revolution through an arbitrary angle, theta, about an arbitrary axis.
+            </summary>
+            <param name="thetaDegrees">Angle of rotation in degrees.</param>
+            <param name="origin_of_rotation">A point</param>
+            <param name="rotation_axis_vector">A unit length vector that defines an axis of rotation.</param>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.NURBS.NURBSSurface">
+            <summary>
+            NURBS Surface class
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSSurface.#ctor(System.Int32,DEMSoft.NURBS.KnotVector,System.Int32,DEMSoft.NURBS.KnotVector,DEMSoft.NURBS.ControlPoint[0:,0:],System.Double[0:,0:])">
+            <summary>
+            Construct NURBS surface
+            </summary>
+            <param name="p">first direction degree</param>
+            <param name="kv1">first direction knot vector</param>
+            <param name="q">second direction degree</param>
+            <param name="kv2">second direction knot vector</param>
+            <param name="cps">control points</param>
+            <param name="weights">weights</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSSurface.#ctor(System.Int32,System.Double[],System.Int32,System.Double[],DEMSoft.NURBS.ControlPoint[0:,0:],System.Double[0:,0:])">
+            <summary>
+            Construct NURBS surface
+            </summary>
+            <param name="p">first direction degree</param>
+            <param name="kv1">first direction knot vector</param>
+            <param name="q">second direction degree</param>
+            <param name="kv2">second direction knot vector</param>
+            <param name="cps">control points</param>
+            <param name="weights">weights</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSSurface.Clone">
+            <summary>
+            Copy NURBS surface
+            </summary>
+            <returns>copied NURBS surface</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSSurface.CreateRevolvedVolume(System.Double,System.Double[],System.Double[])">
+            <summary>
+            Construct a NURBS volume of revolution through an arbitrary angle, theta, about an arbitrary axis.
+            </summary>
+            <param name="thetaDegrees">Angle of rotation in degrees.</param>
+            <param name="origin_of_rotation">A point</param>
+            <param name="rotation_axis_vector">A unit length vector that defines an axis of rotation.</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSSurface.KroneckerTensorProduct(System.Double[0:,0:],System.Double[0:,0:])">
+            <summary>
+            If A is an m-by-n matrix and B is a p-by-q matrix, then the Kronecker tensor product of A and B is a large matrix formed by multiplying B by each element of A
+            A⊗B=
+            |a11*B a12*B ... a1n*B|
+            |a21*B a22*B ... a2n*B|
+            |.....................|
+            |am1*B am2*B ... amn*B|
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.NURBS.NURBSVolume">
+            <summary>
+            NURBS Volume class
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSVolume.#ctor(System.Int32,DEMSoft.NURBS.KnotVector,System.Int32,DEMSoft.NURBS.KnotVector,System.Int32,DEMSoft.NURBS.KnotVector,DEMSoft.NURBS.ControlPoint[0:,0:,0:],System.Double[0:,0:,0:])">
+            <summary>
+            Construct NURBS volume
+            </summary>
+            <param name="p">first direction degree</param>
+            <param name="kv1">first direction knot vector</param>
+            <param name="q">second direction degree</param>
+            <param name="kv2">second direction knot vector</param>
+            <param name="l">third direction degree</param>
+            <param name="kv3">third direction knot vector</param>
+            <param name="cps">control points</param>
+            <param name="weights">weights</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSVolume.#ctor(System.Int32,System.Double[],System.Int32,System.Double[],System.Int32,System.Double[],DEMSoft.NURBS.ControlPoint[0:,0:,0:],System.Double[0:,0:,0:])">
+            <summary>
+            Construct NURBS volume
+            </summary>
+            <param name="p">first direction degree</param>
+            <param name="kv1">first direction knot vector</param>
+            <param name="q">second direction degree</param>
+            <param name="kv2">second direction knot vector</param>
+            <param name="l">third direction degree</param>
+            <param name="kv3">third direction knot vector</param>
+            <param name="cps">control points</param>
+            <param name="weights">weights</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSVolume.Clone">
+            <summary>
+            Copy NURBS volume
+            </summary>
+            <returns>copied NURBS volume</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.NURBSVolume.KroneckerTensorProduct(System.Double[0:,0:],System.Double[0:,0:])">
+            <summary>
+            If A is an m-by-n matrix and B is a p-by-q matrix, then the Kronecker tensor product of A and B is a large matrix formed by multiplying B by each element of A
+            A⊗B=
+            |a11*B a12*B ... a1n*B|
+            |a21*B a22*B ... a2n*B|
+            |.....................|
+            |am1*B am2*B ... amn*B|
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.NURBS.RegionBox">
+            <summary>
+            Region class is region in 3-Dimension
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.RegionBox.#ctor(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="xLower">x-lower</param>
+            <param name="xUpper">x-upper</param>
+            <param name="yLower">y-lower</param>
+            <param name="yUpper">y-upper</param>
+            <param name="zLower">z-lower</param>
+            <param name="zUpper">z-upper</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.RegionBox.SetInterval(DEMSoft.Function.Interval,System.Int32)">
+            <summary>
+            Set interval in each direction
+            </summary>
+            <param name="interval">interval</param>
+            <param name="direction">direction</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.RegionBox.SetBoundary(System.Double,System.Double,System.Int32)">
+            <summary>
+            Set boundary of region
+            </summary>
+            <param name="lower">lower</param>
+            <param name="upper"></param>
+            <param name="direction"></param>
+        </member>
+        <member name="M:DEMSoft.NURBS.RegionBox.IsContain(System.Double,System.Double,System.Double)">
+            <summary>
+            Check a position is inside this region or not
+            </summary>
+            <param name="x">x-coordinate</param>
+            <param name="y">y-coordinate</param>
+            <param name="z">z-coordinate</param>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.NURBS.RegionSphere">
+            <summary>
+            Region class is region in 3-Dimension
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.RegionSphere.#ctor(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="xLower">x-lower</param>
+            <param name="xUpper">x-upper</param>
+            <param name="yLower">y-lower</param>
+            <param name="yUpper">y-upper</param>
+            <param name="zLower">z-lower</param>
+            <param name="zUpper">z-upper</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.RegionSphere.IsContain(System.Double,System.Double,System.Double)">
+            <summary>
+            Check a position is inside this region or not
+            </summary>
+            <param name="x">x-coordinate</param>
+            <param name="y">y-coordinate</param>
+            <param name="z">z-coordinate</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.TrivariateBernsteinBasisFunction.#ctor(DEMSoft.NURBS.BernsteinBasisFunction,DEMSoft.NURBS.BernsteinBasisFunction,DEMSoft.NURBS.BernsteinBasisFunction)">
+            <summary>
+            Construct Trivariate Bernstein basis function
+            </summary>
+            <param name="basisN">Basis function dimension 1</param>
+            <param name="basisM">Basis function dimension 2</param>
+            <param name="basisL">Basis function dimension 2</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.TrivariateBernsteinBasisFunction.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Construct Trivariate Bernstein basis function
+            </summary>
+            <param name="p">Degree direction 1</param>
+            <param name="q">Degree direction 2</param>
+            <param name="l">Degree direction 3</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.TrivariateBSplineBasisFunction.#ctor(DEMSoft.NURBS.BSplineBasisFunction,DEMSoft.NURBS.BSplineBasisFunction,DEMSoft.NURBS.BSplineBasisFunction)">
+            <summary>
+            Construct Trivariate B-Spline basis function
+            </summary>
+            <param name="basisN">Basis function dimension 1</param>
+            <param name="basisM">Basis function dimension 2</param>
+            <param name="basisL">Basis function dimension 2</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.TrivariateBSplineBasisFunction.#ctor(System.Int32,System.Double[],System.Int32,System.Double[],System.Int32,System.Double[])">
+            <summary>
+            Construct Trivariate B-Spline basis function
+            </summary>
+            <param name="p">Degree direction 1</param>
+            <param name="kv1">Knot vector direction 1</param>
+            <param name="q">Degree direction 2</param>
+            <param name="kv2">Knot vector direction 2</param>
+            <param name="l">Degree direction 3</param>
+            <param name="kv3">Knot vector direction 3</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.TrivariateBSplineBasisFunction.#ctor(System.Int32,DEMSoft.NURBS.KnotVector,System.Int32,DEMSoft.NURBS.KnotVector,System.Int32,DEMSoft.NURBS.KnotVector)">
+            <summary>
+            Construct Trivariate B-Spline basis function
+            </summary>
+            <param name="p">Degree direction 1</param>
+            <param name="kv1">Knot vector direction 1</param>
+            <param name="q">Degree direction 2</param>
+            <param name="kv2">Knot vector direction 2</param>
+            <param name="l">Degree direction 3</param>
+            <param name="kv3">Knot vector direction 3</param>
+        </member>
+        <member name="T:DEMSoft.NURBS.TrivariateNURBSBasisFunction">
+            <summary>
+            Bi B-Spline basis function
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.TrivariateNURBSBasisFunction.#ctor(DEMSoft.NURBS.BSplineBasisFunction,DEMSoft.NURBS.BSplineBasisFunction,DEMSoft.NURBS.BSplineBasisFunction,System.Double[0:,0:,0:])">
+            <summary>
+            Construct Bivariate NURBS basis function
+            </summary>
+            <param name="basisN">Basis function dimension 1</param>
+            <param name="basisM">Basis function dimension 2</param>
+            <param name="weights">weights</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.TrivariateNURBSBasisFunction.#ctor(System.Int32,System.Double[],System.Int32,System.Double[],System.Int32,System.Double[],System.Double[0:,0:,0:])">
+            <summary>
+            Construct Bivariate NURBS basis function
+            </summary>
+            <param name="p">Degree direction 1</param>
+            <param name="kv1">Knot vector direction 1</param>
+            <param name="q">Degree direction 2</param>
+            <param name="kv2">Knot vector direction 1</param>
+            <param name="weights">weights</param>
+        </member>
+        <member name="M:DEMSoft.NURBS.TrivariateNURBSBasisFunction.#ctor(System.Int32,DEMSoft.NURBS.KnotVector,System.Int32,DEMSoft.NURBS.KnotVector,System.Int32,DEMSoft.NURBS.KnotVector,System.Double[0:,0:,0:])">
+            <summary>
+            Construct Bivariate NURBS basis function
+            </summary>
+            <param name="p">Degree direction 1</param>
+            <param name="kv1">Knot vector direction 1</param>
+            <param name="q">Degree direction 2</param>
+            <param name="kv2">Knot vector direction 1</param>
+            <param name="weights">weights</param>
+        </member>
+        <member name="P:DEMSoft.NURBS.TrivariateNURBSBasisFunction.Weights">
+            <summary>
+            Get and set weights
+            </summary>
+        </member>
+        <member name="M:DEMSoft.NURBS.TrivariateNURBSBasisFunction.GetWeights">
+            <summary>
+            Get weights
+            </summary>
+            <returns>weights</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.TrivariateNURBSBasisFunction.GetValueTrivariateBasisFunction(System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Value of N(i,xi)*M(j,eta)
+            </summary>
+            <param name="i">index basis function at first direction in global coordinate</param>
+            <param name="xi">first parameter</param>
+            <param name="j">index basis function at second direction in global coordinate</param>
+            <param name="eta">second parameter</param>
+            <param name="k">index basis function at third direction in global coordinate</param>
+            <param name="zeta">third parameter</param>
+            <returns>value of bivariate basis function</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.TrivariateNURBSBasisFunction.GetValueTrivariateBasisFunctions(System.Double,System.Double,System.Double)">
+            <summary>
+            All of values of Ni(i,xi)*Mi(j,eta) in span [p+1,q+1,l+1]
+            </summary>
+            <param name="xi">parameter in direction xi</param>
+            <param name="eta">parameter in direction eta</param>
+            <param name="zeta">parameter in direction zeta</param>
+            <returns>[p+1,q+1,l+1] value</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.TrivariateNURBSBasisFunction.GetValueBezierExtractionBivariateBasisFunctions(System.Double,System.Double,System.Double,System.Double[0:,0:][0:,0:,0:])">
+            <summary>
+            Compute Trivariate NURBS basis functions by Bezier Extraction
+            </summary>
+            <param name="xi">xi-coordination</param>
+            <param name="eta">eta-coordination</param>
+            <param name="zeta">zeta-coordination</param>
+            <param name="C">Extraction operator element matrix, compute from NURBSVolume</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.TrivariateNURBSBasisFunction.GetDerivativeBezierExtractionBasisFunctions(System.Double,System.Double,System.Double,System.Double[0:,0:][0:,0:,0:])">
+            <summary>
+            Compute derivative of Trivariate NURBS basis functions by Bezier Extraction [dxi][p,q,r]
+            </summary>
+            <param name="xi">xi-coordination</param>
+            <param name="eta">eta-coordination</param>
+            <param name="zeta">zeta-coordination</param>
+            <param name="C">Extraction operator element matrix, compute from NURBSVolume</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.TrivariateNURBSBasisFunction.GetDerivativeTrivariateBasisFunction(System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Get value of derivative bivariate basis function [dth,dth]
+            </summary>
+            <param name="i">index basis function at first direction in global coordinate</param>
+            <param name="xi">first parameter</param>
+            <param name="j">index basis function at second direction in global coordinate</param>
+            <param name="eta">second parameter</param>
+            <param name="k">index basis function at third direction in global coordinate</param>
+            <param name="zeta">third parameter</param>
+            <param name="d">dth derivative on two directions</param>
+            <returns>value of derivative</returns>
+        </member>
+        <member name="M:DEMSoft.NURBS.TrivariateNURBSBasisFunction.GetDerivativeTrivariateBasisFunctions(System.Double,System.Double,System.Double,System.Int32)">
+            <summary>
+            Get derivative trivariate lenght [p+1,q+1,r+1][kth,lth]
+            </summary>
+            <param name="xi">first direction parameter</param>
+            <param name="eta">second direction parameter</param>
+            <param name="zeta">third direction parameter</param>
+            <param name="d">dth derivative on two directions</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

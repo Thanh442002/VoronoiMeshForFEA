@@ -1,0 +1,2113 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DEMSoft.IGA</name>
+    </assembly>
+    <members>
+        <member name="T:DEMSoft.IGA.AbstractConstraintValue">
+            <summary>
+            A class of Constraint with value of degree of freedom
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractConstraintValue.#ctor(System.Int32,DEMSoft.Function.FunctionRToR,System.Object)">
+            <summary>
+            Construct class with value of constraint, if no constraint, so input double.NaN
+            </summary>
+            <param name="fieldID">ID of field to be constrainted</param>
+            <param name="piecewiseLoad">Constraint function coressponse the time</param>
+            <param name="valueConstraint">Value constraint</param>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractConstraintValue.GetValueConstraint(System.Double)">
+            <summary>
+            Get constraint at index is value constraint
+            </summary>
+            <param name="time">Time of constraint</param>
+            <returns>value of </returns>
+        </member>
+        <member name="T:DEMSoft.IGA.AbstractElement">
+            <summary>
+            Abstract patch (as element in IGA)
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractElement.patch">
+            <summary>
+            Patch of problem
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractElement.id">
+            <summary>
+            ID of patch
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractElement.index">
+            <summary>
+            Index of element in patch
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractElement.#ctor(DEMSoft.IGA.AbstractPatch,System.Int32)">
+            <summary>
+            Contructor class
+            </summary>
+            <param name="patch">mesh of problem</param>
+            <param name="idElement">ID of patch</param>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractElement.GetPatch">
+            <summary>
+            Get mesh of problem
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractElement.GetIndexGlobalCoordinate(System.Int32)">
+            <summary>
+            Get index of patch in global coordinate
+            </summary>
+            <param name="direction"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractElement.GetID">
+            <summary>
+            Get ID of patch
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractElement.GetParameterTwoEndElement(System.Int32)">
+            <summary>
+            Get two parametric on end points on patch coressponding index of coordinate
+            </summary>
+            <param name="indexCoordinate">index of coordinate : 0 - xi coordinate, 1 - eta coordinate</param>
+            <returns>two parametric on end points</returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractElement.IsInsideRegion(DEMSoft.NURBS.IRegion)">
+            <summary>
+            Check least part of patch is inside region
+            </summary>
+            <param name="loc">Location (Region class)</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractElement.IsCompleteInsideRegion(DEMSoft.NURBS.IRegion)">
+            <summary>
+            Check full of patch is inside region
+            </summary>
+            <param name="loc">Location (Region class)</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractElement.GetCountDimension">
+            <summary>
+            Get number of dimension
+            </summary>
+            <returns>number of dimension</returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractElement.GetDisplacementLocal">
+            <summary>
+            Get u vector on one element
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.IGA.AbstractElement2D">
+            <summary>
+            Abstract 2D element class. It uses only for 2D problem.
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractElement2D.GradBasisFunction(System.Double[])">
+            <summary>
+            Compute derivatives wrt local coords
+            dNdxi
+            </summary>
+            <param name="xi1"></param>
+            <param name="xi2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractElement2D.JacobianAt(CenterSpace.NMath.Core.DoubleMatrix)">
+            <summary>
+            Compute the jacobian matrix
+            dxdxi
+            </summary>
+            <param name="dNdxi">Derivatives wrt local coords dNdxi</param>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.IGA.AbstractElement2DPlate">
+            <summary>
+            Abstract 2D element class. It uses only for 2D problem.
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractElement2DPlate.GradBasisFunction(System.Double[])">
+            <summary>
+            Compute derivatives wrt local coords
+            dNdxi
+            </summary>
+            <param name="xi1"></param>
+            <param name="xi2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractElement2DPlate.JacobianAt(CenterSpace.NMath.Core.DoubleMatrix)">
+            <summary>
+            Compute the jacobian matrix
+            dxdxi
+            </summary>
+            <param name="dNdxi">Derivatives wrt local coords dNdxi</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractElement3D.GradBasisFunction(System.Double[])">
+            <summary>
+            Compute derivatives wrt local coords
+            dNdxi
+            </summary>
+            <param name="xi1"></param>
+            <param name="xi2"></param>
+            <param name="xi3"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractElement3D.JacobianAt(CenterSpace.NMath.Core.DoubleMatrix)">
+            <summary>
+            Compute the jacobian matrix
+            dxdxi
+            </summary>
+            <param name="dNdxi">Derivatives wrt local coords dNdxi</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractElementStructure2D.CreateMaterialMatrix(System.Int32,System.Int32)">
+            <summary>
+            Compute material matrix at gauss point
+            </summary>
+            <param name="i"></param>
+            <param name="j"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.IGA.Dimension">
+            <summary>
+            Enumerate of dimension of model
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.Dimension.Plane">
+            <summary>
+            In two-dimension
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.Dimension.Solid">
+            <summary>
+            In three-dimension
+            </summary>
+        </member>
+        <member name="T:DEMSoft.IGA.TypeModelProblem">
+            <summary>
+            Type of model
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.TypeModelProblem.Structural">
+            <summary>
+            Structural analysis.
+            DOF: UX, UY, UZ
+            Force label: FX, FY, FZ
+            Reaction solution: Force
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.TypeModelProblem.Thermal">
+            <summary>
+            Thermal analysis
+            DOF: TEMP
+            Force label: HEAT
+            Reaction solution: Heat flow
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.TypeModelProblem.Piezoelectric">
+            <summary>
+            Couple-field analysis piezoelectric
+            DOF: UX, UY, UZ, VOLT
+            Force label: FX, FY, FZ, CHRG
+            Reaction solution: Force, electric charge (negative)
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.TypeModelProblem.StructuralThermal">
+            <summary>
+            Couple-field analysis structural-thermal
+            DOF: UX, UY, UZ, TEMP
+            Force label: FX, FY, FZ, HEAT
+            Reaction solution: Force, Heat flow (negative)
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.TypeModelProblem.PhaseField">
+            <summary>
+            Couple-field analysis phase-field
+            DOF: UX, UY, UZ, PHASEFIELD
+            Force label: FX, FY, FZ
+            Reaction solution: Force
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.TypeFields.Structural">
+            <summary>
+            Structural analysis.
+            DOF: UX, UY, UZ
+            Force label: FX, FY, FZ
+            Reaction solution: Force
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.TypeFields.Thermal">
+            <summary>
+            Thermal analysis
+            DOF: TEMP
+            Force label: HEAT
+            Reaction solution: Heat flow (negative)
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.TypeFields.Electric">
+            <summary>
+            Electric analysis
+            DOF: VOLT
+            Force label: CHRG
+            Reaction solution: electric charge (negative)
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.TypeFields.PhaseField">
+            <summary>
+            Phase-field analysis 
+            DOF:PHASEFIELD
+            Force label: none
+            Reaction solution: none
+            </summary>
+        </member>
+        <member name="T:DEMSoft.IGA.TypeAnalysisModel">
+            <summary>
+            Enumerate type of analysis model
+            </summary>
+        </member>
+        <member name="T:DEMSoft.IGA.AbstractModel">
+            <summary>
+            Abstract model class
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractModel.listPatch">
+            <summary>
+            List of patches in model
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractModel.loads">
+            <summary>
+            List of loads in model
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractModel.materials">
+            <summary>
+            List of materials in model
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractModel.listConnection">
+            <summary>
+            List of connection between two patches, connection 1:1
+            </summary>
+        </member>
+        <member name="P:DEMSoft.IGA.AbstractModel.listComputeResult">
+            <summary>
+            Store results of field variable of analysis and results of component (stress, strain, total displacement,...)
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractModel.listConstraint">
+            <summary>
+            Store constrain
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractModel.listInitialConstraint">
+            <summary>
+            Store initial constrain
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractModel.countDOF">
+            <summary>
+            Number of degree of freedoms in model
+            </summary>
+        </member>
+        <member name="P:DEMSoft.IGA.AbstractModel.StructureDimension">
+            <summary>
+            Store enum Dimension of structure in model, 2D: Dimension.Plane, 3D: Dimension.Solid
+            </summary>
+        </member>
+        <member name="P:DEMSoft.IGA.AbstractModel.IsComputeKeParallel">
+            <summary>
+            Compute Ke in parallel or not
+            </summary>
+        </member>
+        <member name="P:DEMSoft.IGA.AbstractModel.IsBezierExtraction">
+            <summary>
+            Use bezier extraction or not
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractModel.monitorDataHistorism">
+            <summary>
+            Store list of monitor data at points
+            </summary>
+        </member>
+        <member name="P:DEMSoft.IGA.AbstractModel.IsSparseData">
+            <summary>
+            Matrix or Vector in Sparse or Dense
+            </summary>
+        </member>
+        <member name="P:DEMSoft.IGA.AbstractModel.IsSaveStepByStep">
+            <summary>
+            Save result in step by step or in the end of solving
+            </summary>
+        </member>
+        <member name="P:DEMSoft.IGA.AbstractModel.IsDrawConvergencePlot">
+            <summary>
+            Draw convergence error results in iteration problem
+            </summary>
+        </member>
+        <member name="P:DEMSoft.IGA.AbstractModel.IsDrawMonitorPlot">
+            <summary>
+            Draw converged result in monitor data store
+            </summary>
+        </member>
+        <member name="P:DEMSoft.IGA.AbstractModel.TypeAnalysisModel">
+            <summary>
+            Store type of analysis of model, such as Static, Transient, Modal, TopologyOptimization
+            </summary>
+        </member>
+        <member name="P:DEMSoft.IGA.AbstractModel.TypeModel">
+            <summary>
+            Store type of model Structural, Thermal, Piezoelectric, StructuralThermal, PhaseField
+            </summary>
+        </member>
+        <member name="P:DEMSoft.IGA.AbstractModel.FileNameDataTime">
+            <summary>
+            Store variables in the model in time step
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractModel.Time">
+            <summary>
+            Store time step
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractModel.deltaT">
+            <summary>
+            Time step
+            </summary>
+        </member>
+        <member name="P:DEMSoft.IGA.AbstractModel.IsRunFromInitial">
+            <summary>
+            Check process is finished or not
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractModel.IsApplyBoundaryValue">
+            <summary>
+            If this is true, program will apply constraint>0, else apply zero
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractModel.typeOfFieldsInMultifield">
+            <summary>
+            One field displacement:1, coupled-fields: 2...
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractModel.IsWriteLogFile">
+            <summary>
+            Write log file storing all parameters of problem
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractModel.stopWatchWholeModel">
+            <summary>
+            Stop watch to monitor time computing whole process
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractModel.logFile">
+            <summary>
+            Contain log file storing all parameters of problem
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractModel.numberOfSubstepLoad">
+            <summary>
+            Use for iteration problems in 1 Load step 
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractModel.numberOfStepSave">
+            <summary>
+            Save number of Step load (&lt;numberOfStepLoad)
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractModel.tArray">
+            <summary>
+            Store all t-array, including constraint and unconstraint
+            [number of field][count DOF]
+            Number of field of One field problem is [0], coupled-field problem: [0]: mechanical, [1]: thermal or [1] electric
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractModel.tArrayUnconstraint">
+            <summary>
+            Store unconstraint t-array
+            [number of field][count DOF unconstraint]
+            Number of field of One field problem is [0], coupled-field problem: [0]: mechanical, [1]: thermal or [1] electric
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractModel.tArrayConstraint">
+            <summary>
+            Store constraint t-array
+            [number of field][count DOF constraint]
+            Number of field of One field problem is [0], coupled-field problem: [0]: mechanical, [1]: thermal or [1] electric
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.#ctor(DEMSoft.IGA.TypeModelProblem,DEMSoft.IGA.TypeAnalysisModel,DEMSoft.IGA.Dimension,System.String,System.String)">
+            <summary>
+            Constructor of abstract model
+            </summary>
+            <param name="typeProblem">Type of model</param>
+            <param name="typeAnalysis">Type of analysis model</param>
+            <param name="structureDimension">Dimension of structure</param>
+            <param name="pathProject">Path of project</param>
+            <param name="nameProject">Name of project</param>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.Initialize">
+            <summary>
+            Initialize of gauss point of elements
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.GetMonitorDataHistorism">
+            <summary>
+            Get monitor history data
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.AddMonitorData(DEMSoft.Common.Result,System.Int32,System.Double[])">
+            <summary>
+            Add monitor data of point
+            </summary>
+            <param name="resultType">type of result to store</param>
+            <param name="indexPatch">index of patch containt point to get result</param>
+            <param name="xi">parametric coordinations</param>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.GetPatch(System.Int32)">
+            <summary>
+            Get patch by index of patch in list patch
+            </summary>
+            <param name="index">index</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.AddPatch(DEMSoft.NURBS.AbstractParametricGeometry)">
+            <summary>
+            Add patch into model
+            </summary>
+            <param name="geo">Geometry of patch</param>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.CountPatch">
+            <summary>
+            Count number of patch in model
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.AddMaterial(DEMSoft.EngineeringData.Material)">
+            <summary>
+            Add material into model
+            </summary>
+            <param name="ma">material</param>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.GetMaterial(System.Int32)">
+            <summary>
+            Get material by index
+            </summary>
+            <param name="index">index material</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.CountMaterial">
+            <summary>
+            Count number of material
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.AttachMaterialToPatch(System.Int32,System.Int32)">
+            <summary>
+            Attach material to patch
+            </summary>
+            <param name="indexMaterial">index of material in model</param>
+            <param name="indexPatch">index of patch in model</param>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.InitializePatch">
+            <summary>
+            Initializa patch to create elements
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.AddLoad(DEMSoft.IGA.AbstractLoad)">
+            <summary>
+            Add load of model
+            </summary>
+            <param name="load">load</param>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.GetLoad(System.Int32)">
+            <summary>
+            Get load by index
+            </summary>
+            <param name="index">index</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.CountLoad">
+            <summary>
+            Count number of load
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.CountDOF">
+            <summary>
+            Get number of degree of freedom in model
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.Solve">
+            <summary>
+            Solve problem
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.PreProcessing">
+            <summary>
+            PreProcessing to initialize and enumerate model
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.PostProcessing">
+            <summary>
+            Post processing to get last result uLocal to control points
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.ComputeValueAtGausspoints(DEMSoft.IGA.DataInGausspoint)">
+            <summary>
+            
+            </summary>
+            <param name="variable">only for currentStress and currentStrain</param>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.SetInterfaceBetweenTwoPatches(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32[],System.Boolean,System.Boolean,System.Collections.Generic.List{DEMSoft.NURBS.ControlPoint}@)">
+            <summary>
+            Set interface of two patch
+            </summary>
+            <param name="masterPatch">master patch</param>
+            <param name="slavePatch">slave patch</param>
+            <param name="indexMasterObjectInterface">index edge of master patch</param>
+            <param name="indexSlaveObjectInterface">index edge of slave patch</param>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.SetCouplingMultipleControlPoints(DEMSoft.NURBS.ControlPoint,System.Double[],DEMSoft.NURBS.ControlPoint[])">
+            <summary>
+            Set coupling between a slave control point (p0) with multiple master control points (pi, i=1:n)
+            Ex: p0= 2*p1+3*p2-p3 , coef=[2,3,-1]
+            </summary>
+            <param name="slaveCp"> A slave control point (p0)</param>
+            <param name="coef">The coeficients of master control points in the equation</param>
+            <param name="masterCp">Multiple master control points (pi, i=1:n)</param>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.SetCouplingTwoControlPoint(DEMSoft.NURBS.ControlPoint,DEMSoft.NURBS.ControlPoint,System.Int32,System.Int32)">
+            <summary>
+            Set coupling two control points directly
+            </summary>
+            <param name="masterCp">Master control point</param>
+            <param name="slaveCp">Slave control point</param>
+            <param name="indexMasterPatch">Index of master patch</param>
+            <param name="indexSlavePatch">Index of slave patch</param>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.DrawGeometry(DEMSoft.Drawing.ViewerForm,System.Int32,System.Double)">
+            <summary>
+            Draw initial geometry
+            </summary>
+            <param name="viewer">viewer form</param>
+            <param name="resolution">resolution on a element</param>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.DrawResult(DEMSoft.Common.Result,DEMSoft.Drawing.ViewerForm,System.Int32,System.Boolean,System.Double,DEMSoft.Drawing.Orientation,DEMSoft.Drawing.ColorType)">
+            <summary>
+            Draw result with specify results
+            </summary>
+            <param name="re">kind of result UX, UY, USUM,...</param>
+            <param name="viewer">viewer form</param>
+            <param name="resolution">resolution on a element</param>
+            <param name="isDeformation">draw in deformation or not</param>
+            <param name="scale">scale of deformation</param>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.StoreBoundaryCondition(System.Double)">
+            <summary>
+            For processing to apply boundary condition on K anf F
+            [dofOnGlobal, value, typeDOFConstrainted]
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.GetTimeByStep(System.Int32)">
+            <summary>
+            Get time by step load
+            </summary>
+            <param name="step">step load</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.GetNumberOfSubstepLoad(System.Int32)">
+            <summary>
+            Get number of substep in special load step, load step has index 0.
+            </summary>
+            <param name="indexStepLoad"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModel.SetLoadControlSolver(System.Int32[])">
+            <summary>
+            Item of array stores number of substep in this load step. Length of the array, which equals 3, means 3 load steps
+            </summary>
+            <param name="numberOfSubstepLoad"></param>
+        </member>
+        <member name="T:DEMSoft.IGA.AbstractModelPiezoelectric">
+            <summary>
+            Abstract model of piezoelectric
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModelPiezoelectric.#ctor(DEMSoft.IGA.TypeAnalysisModel,DEMSoft.IGA.Dimension,System.String,System.String)">
+            <summary>
+            Constructor class
+            </summary>
+        </member>
+        <member name="T:DEMSoft.IGA.AbstractModelStructure">
+            <summary>
+            Structure 2D problem (plane stress, plane strain). Default is plane stress
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModelStructure.#ctor(DEMSoft.IGA.TypeAnalysisModel,DEMSoft.IGA.Dimension,System.String,System.String)">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="problem">Define state of stress, plane stress or plane strain</param>
+        </member>
+        <member name="T:DEMSoft.IGA.AbstractModelThermal">
+            <summary>
+            Abstract thermal model
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModelThermal.#ctor(DEMSoft.IGA.TypeAnalysisModel,DEMSoft.IGA.Dimension,System.String,System.String)">
+            <summary>
+            Constructor class
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModelThermal.AddHeatSource(DEMSoft.IGA.HeatGenerationSourceBody)">
+            <summary>
+            Add heat source
+            </summary>
+            <param name="source">heat generation source</param>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModelThermal.GetHeatSource(System.Int32)">
+            <summary>
+            Get heat source
+            </summary>
+            <param name="index">index</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModelThermal.CountHeatSource">
+            <summary>
+            Count number of heat generation source
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.IGA.AbstractModelThermoelastic">
+            <summary>
+            Structure 2D problem (plane stress, plane strain). Default is plane stress
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractModelThermoelastic.#ctor(DEMSoft.IGA.TypeAnalysisModel,DEMSoft.IGA.Dimension,System.String,System.String)">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="problem">Define state of stress, plane stress or plane strain</param>
+        </member>
+        <member name="T:DEMSoft.IGA.TypeNonlinearSolver">
+            <summary>
+            Type of nonlinear solver
+            </summary>
+            <see cref="!:Nam-Ho Kim - Introduction to Nonlinear"/>
+        </member>
+        <member name="F:DEMSoft.IGA.TypeSchemeNonlinearSolver.Monolithic">
+            <summary>
+            Solve all variables in one step in couple-fields
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.TypeSchemeNonlinearSolver.Staggered">
+            <summary>
+            Solve sequence variables in one step in couple-fields.Solve each independence fields in one step for next iterator step.
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.TypeSchemeNonlinearSolver.SingleStaggered">
+            <summary>
+            Solve single all sequence variables in one step in couple-fields. Solve multiple independence fields in one step.
+            </summary>
+        </member>
+        <member name="T:DEMSoft.IGA.AbstractNonlinearSolver">
+            <summary>
+            Implement the load controlled Newton-Raphson solver for non-linear problems
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractNonlinearSolver.#ctor(DEMSoft.IGA.AbstractModelStructure,DEMSoft.IGA.TypeNonlinearSolver)">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="model"></param>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractNonlinearSolver.Solve(DEMSoft.IGA.TypeNonlinearSolver)">
+            <summary>
+            Solve
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractNonlinearSolver.SolveOneIterationDense(CenterSpace.NMath.Core.DoubleMatrix,CenterSpace.NMath.Core.DoubleVector,CenterSpace.NMath.Core.DoubleVector,System.Double[]@,CenterSpace.NMath.Core.DoubleVector@)">
+            <summary>
+            Solve for one iteration.
+            </summary>
+            <param name="Fstep"></param>
+            <param name="ui"></param>
+            <param name="err1"></param>
+            <param name="bUpdate"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.IGA.AbstractPatch">
+            <summary>
+            Abstract of NURBS patch mesh
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractPatch.geometry">
+            <summary>
+            Nurbs surface 
+            [0] ux - velocity x, uy - velocity y
+            [1] theta - volume change, p - pressure
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractPatch.listElement">
+            <summary>
+            List of patch
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractPatch.countField">
+            <summary>
+            Number of fields of problem 
+            [0] ux - velocity x, uy - velocity y
+            [1] theta - volume change, p - pressure
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractPatch.INC">
+            <summary>
+            A corresponding NURBS coordinate 
+            [0] ux - velocity x, uy - velocity y
+            [1] theta - volume change, p - pressure
+            [][number of global basis functions, index coordinate]
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractPatch.IEN">
+            <summary>
+            A corresponding global basis function number
+            [0] ux - velocity x, uy - velocity y
+            [1] theta - volume change, p - pressure
+            [][number of local basis functions, number of elements]
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractPatch.enumeratePatch">
+            <summary>
+            A corresponding equation number
+            [0] ux - velocity x, uy - velocity y
+            [1] theta - volume change, p - pressure
+            [][number Of Fields, number of global basis functions]
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractPatch.IPN">
+            <summary>
+            A corresponding patch number [index of patch, index coordinate]
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractPatch.countDOF">
+            <summary>
+            number of DOFs of problem
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.AbstractPatch.countDimension">
+            <summary>
+            number of dimension (1-curve, 2-surface, 3-solid)
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch.GetGeometry(System.Int32)">
+            <summary>
+            Get surface 
+            </summary>
+            <param name="idx">
+            [0] ux - velocity x, uy - velocity y -----
+            [1] theta - volume change, p - pressure</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch.GetCountDOF">
+            <summary>
+            Get number of DOFs in patch
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch.GetCountField(System.Int32)">
+            <summary>
+            Get number of fields
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch.GetCountDimension">
+            <summary>
+            Get number of dimension
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch.CreateINC">
+            <summary>
+            Create INC array
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch.CreateIEN">
+            <summary>
+            Create INC array
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch.CreateIPN">
+            <summary>
+            Create IPN array (index of element)
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch.EnumerateInPatch">
+            <summary>
+            Create ID array
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch.GetINC(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Get corresponding NURBS coordinate with a global basis function number and a parametric direction number
+            </summary>
+            <param name="idx">
+            [0] ux - velocity x, uy - velocity y -----
+            [1] theta - volume change, p - pressure</param>
+            <param name="indexGlobalBasisFunction">Index of global basis function in 1D array</param>
+            <param name="indexCoordinate">a parametric direction number</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch.FindIndexOfGlobalBasisFunction(System.Int32,System.Int32[])">
+            <summary>
+            Find index of global basis function corresponding global coordinate
+            </summary>
+            <param name="index">
+            [0] ux - velocity x, uy - velocity y -----
+            [1] theta - volume change, p - pressure</param>
+            <param name="idx">index of global basis functions in global coordinate</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch.GetIEN(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Get corresponding global basis function number with a local basis function number and an element number
+            </summary>
+            <param name="idx">
+            [0] ux - velocity x, uy - velocity y -----
+            [1] theta - volume change, p - pressure</param>
+            <param name="indexElement">index of element</param>
+            <param name="indexLocalBasisFunction">a local basis function number in element</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch.GetEnumerateInPatch(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Get corresponding equation number with a global basis function number and a dof number.
+            Return -1 then this DOF was constrainted.
+            </summary>
+            <param name="idx">
+            [0] ux - velocity x, uy - velocity y -----
+            [1] theta - volume change, p - pressure</param>
+            <param name="indexFields">index of fields</param>
+            <param name="indexGlobalBasisFunction">index of a global basis function</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch.GetIPN(System.Int32,System.Int32)">
+            <summary>
+            Get corresponding patch(element) number with an patch(element) number and direction number
+            </summary>
+            <param name="indexElement">id of element</param>
+            <param name="indexCoordinate">a parametric direction number</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch.FindIndexOfElement(System.Int32[])">
+            <summary>
+            Find index of global basis function corresponding global coordinate
+            </summary>
+            <param name="idx">index of global basis functions in global coordinate</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch.GetLM(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Get corresponding equation number with a dof number, a local basis function number and  an element number
+            </summary>
+            <param name="idx">
+            [0] ux - velocity x, uy - velocity y -----
+            [1] theta - volume change, p - pressure</param>
+            <param name="indexLocalBasisFunction">index of local basis function</param>
+            <param name="indexElement">index of element</param>
+            <param name="indexDOF">index of DOF</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch.SelectControlPoints(System.Int32,DEMSoft.NURBS.IRegion)">
+             <summary>
+             Select control points in region
+             </summary>
+             <param name="idx">
+             [0] ux - velocity x, uy - velocity y -----
+             [1] theta - volume change, p - pressure</param>
+            <param name="loc">location is a region object</param>
+             <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch.SelectAllControlPoints(System.Int32)">
+            <summary>
+            Select all of control points on patch
+            </summary>
+            <param name="idx"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch.CalculateNumberOfElements">
+            <summary>
+            Get number of patchs
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch.GetCountLocalBasisFunctions(System.Int32)">
+            <summary>
+            Get number of local basis functions
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch.GetCountGlobalBasisFunctions(System.Int32)">
+            <summary>
+            Get number of global basis functions
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch.SelectEndPatchElement(System.Int32)">
+            <summary>
+            Select serial of patchs from mesh by index on each direction
+            </summary>
+            <param name="index">[0], [1]: u-direction, [2], [3]: v-direction, [4], [5]: w-direction</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch.SelectElement(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Select serial of patchs from mesh by location
+            </summary>
+            <param name="idx">
+            [0] ux - velocity x, uy - velocity y -----
+            [1] theta - volume change, p - pressure</param>
+            <param name="xLower">x-lower</param>
+            <param name="xUpper">x-upper</param>
+            <param name="yLower">y-lower</param>
+            <param name="yUpper">y-upper</param>
+            <param name="zLower">z-lower</param>
+            <param name="zUpper">z-upper</param>
+            <returns></returns>
+        </member>
+        <member name="P:DEMSoft.IGA.AbstractPatch.ID">
+            <summary>
+            ID of patch
+            </summary>
+        </member>
+        <member name="T:DEMSoft.IGA.AbstractPatch2D">
+            <summary>
+            Abstract class to define NURBS surface to NURBS Patch
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch2D.#ctor(DEMSoft.NURBS.Abstract2DParametricGeometry,DEMSoft.IGA.TypeStructure)">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="surface">Nurbs surface</param>
+            <param name="numberOfFields">number of fields in model</param>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch2D.GetSurface">
+            <summary>
+            Get NURBS surface
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch2D.CreateINC">
+            <summary>
+            Create INC array
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch2D.CreateIEN">
+            <summary>
+            Create INC array
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch2D.CreateIPN">
+            <summary>
+            Create index of patch on direction
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch2D.CalculateNumberOfElements">
+            <summary>
+            Get number of patchs
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch2D.EnumerateInPatch">
+            <summary>
+            Create ID array
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch2D.GetDeformationSurface(System.Double)">
+            <summary>
+            Get deformation surface to draw result with scale factor
+            </summary>
+            <param name="scale">scale factor</param>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.IGA.AbstractPatch3D">
+            <summary>
+            Abstract class to define NURBS surface to NURBS Patch
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch3D.#ctor(DEMSoft.NURBS.NURBSVolume,System.Int32)">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="volume">Nurbs volume</param>
+            <param name="numberOfFields">number of fields in model</param>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch3D.GetVolume">
+            <summary>
+            Get NURBS surface
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch3D.CreateINC">
+            <summary>
+            Create INC array
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch3D.CreateIEN">
+            <summary>
+            Create INC array
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch3D.EnumerateInPatch">
+            <summary>
+            Create ID array
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch3D.CreateIPN">
+            <summary>
+            Create index of patch on direction
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch3D.FindIndexOfElementAt(System.Double[])">
+            <summary>
+            Find index of element at coordinate
+            </summary>
+            <param name="xi"></param>
+            <param name="eta"></param>
+            <param name="zeta"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch3D.CalculateNumberOfElements">
+            <summary>
+            Get number of patchs
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch3D.GetCountLocalBasisFunctions(System.Int32)">
+            <summary>
+            Get number of local basis functions
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch3D.GetCountGlobalBasisFunctions(System.Int32)">
+            <summary>
+            Get number of global basis functions
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch3D.SelectEndPatchElement(System.Int32)">
+            <summary>
+            Select serial of patchs from mesh by index on each direction
+            </summary>
+            <param name="index">[0], [1]: u-direction, [2], [3]: v-direction, [4], [5]: w-direction</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch3D.SelectEndPatchControlPoints(System.Int32)">
+            <summary>
+            Select serial of patchs from mesh by index on each direction
+            </summary>
+            <param name="index">index = 0-first column or row of patch on mesh, 1-last column or row of patch on mesh</param>
+            <param name="indexCoordinate">index of direction coordinate</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatch3D.GetDeformationVolume(System.Double)">
+            <summary>
+            Get deformation surface to draw result with scale factor
+            </summary>
+            <param name="scale">scale factor</param>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.IGA.AbstractPatchOneField">
+            <summary>
+            Abstract of NURBS patch mesh
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatchOneField.GetGeometry">
+            <summary>
+            Get surface 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatchOneField.GetCountField">
+            <summary>
+            Get number of fields
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatchOneField.CreateINC">
+            <summary>
+            Create INC array
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatchOneField.CreateIEN">
+            <summary>
+            Create INC array
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatchOneField.CreateIPN">
+            <summary>
+            Create IPN array (index of element)
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatchOneField.EnumerateInPatch">
+            <summary>
+            Create ID array
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatchOneField.EnumerateInGlobalMultiPatch(System.Int32)">
+            <summary>
+            Create ID on Global (Multipatch)
+            </summary>
+            <param name="countDof"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatchOneField.GetINC(System.Int32,System.Int32)">
+            <summary>
+            Get corresponding NURBS coordinate with a global basis function number and a parametric direction number
+            </summary>
+            <param name="idx">
+            [0] ux - velocity x, uy - velocity y -----
+            [1] theta - volume change, p - pressure</param>
+            <param name="indexGlobalBasisFunction">Index of global basis function in 1D array</param>
+            <param name="indexCoordinate">a parametric direction number</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatchOneField.FindIndexOfGlobalBasisFunction(System.Int32[])">
+            <summary>
+            Find index of global basis function corresponding global coordinate
+            </summary>
+            <param name="idx">index of global basis functions in global coordinate</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatchOneField.GetIEN(System.Int32,System.Int32)">
+            <summary>
+            Get corresponding global basis function number with a local basis function number and an element number
+            </summary>
+            <param name="indexElement">index of element</param>
+            <param name="indexLocalBasisFunction">a local basis function number in element</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatchOneField.GetIDInPatch(System.Int32,System.Int32)">
+            <summary>
+            Get corresponding equation number with a global basis function number and a dof number.
+            Return -1 then this DOF was constrainted.
+            </summary>
+            <param name="indexFields">index of fields</param>
+            <param name="indexGlobalBasisFunction">index of a global basis function</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatchOneField.GetLM(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Get corresponding equation number with a dof number, a local basis function number and  an element number
+            </summary>
+            <param name="indexLocalBasisFunction">index of local basis function</param>
+            <param name="indexElement">index of element</param>
+            <param name="indexDOF">index of DOF</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatchOneField.FindIndexOfElementAt(System.Double[])">
+            <summary>
+            Find index of element at coordinate
+            </summary>
+            <param name="xi"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatchOneField.SelectControlPointsByRegionBox(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Select control points in region
+            </summary>
+            <param name="xLower">x-lower</param>
+            <param name="xUpper">x-upper</param>
+            <param name="yLower">y-lower</param>
+            <param name="yUpper">y-upper</param>
+            <param name="zLower">z-lower</param>
+            <param name="zUpper">z-upper</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatchOneField.GetCountLocalBasisFunctions(System.Int32)">
+            <summary>
+            Get number of local basis functions
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatchOneField.GetCountGlobalBasisFunctions(System.Int32)">
+            <summary>
+            Get number of global basis functions
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatchOneField.SelectEndPatchElement(System.Int32)">
+            <summary>
+            Select serial of patchs from mesh by index on each direction
+            </summary>
+            <param name="index">[0], [1]: u-direction, [2], [3]: v-direction, [4], [5]: w-direction</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatchOneField.FindIndexofIDArray(System.Int32,System.Int32@,System.Int32@)">
+            <summary>
+            From enumerate number, determine index of Control point on Global and index of field of Control point
+            </summary>
+            <param name="enumerate">enumerate number</param>
+            <param name="indexGlobalCps">index of Global control point on 1 array</param>
+            <param name="indexField">index of field of control point</param>
+        </member>
+        <member name="M:DEMSoft.IGA.AbstractPatchOneField.SelectEndPatchControlPoints(System.Int32)">
+            <summary>
+            Select serial of patchs from mesh by index on each direction
+            </summary>
+            <param name="index">index = [0]-[1] : u-direction, [2]-[3] : v-direction</param>
+            <returns></returns>
+        </member>
+        <member name="F:DEMSoft.IGA.Convergence.criterionConvergence">
+            <summary>
+            Criterion convergence
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.Convergence.norm">
+            <summary>
+            Type of norm
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.Convergence.maximumIteration">
+            <summary>
+            Maximum of iterator
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.Convergence.TOL">
+            <summary>
+            Tolorance
+            </summary>
+        </member>
+        <member name="T:DEMSoft.IGA.CriterionConvergence">
+            <summary>
+            Convergence Criteria
+            </summary>
+            <see cref="!:https://dianafea.com/manuals/d944/Analys/node395.html"/>
+        </member>
+        <member name="F:DEMSoft.IGA.CriterionConvergence.DisplacementCriterion">
+            <summary>
+            Displacement criterion
+            </summary>
+            <remarks>The displacement norm is the Euclidian norm of the iterative displacement increment. To check convergence, the displacement norm is checked against the norm of the displacement increments in the first prediction of the increment.
+            Displacement norm ratio = $\displaystyle {\frac{{ \sqrt{ \delta\mathbf{u}_{i}^{\mathrm{\scriptscriptstyle{lta\mathbf{u}_{0}^{\mathrm{\scriptscriptstyle{T}}}\; \Delta\mathbf{u}_{0} } }}}$	(31.17)
+            From(31.17) it is clear that the ratio of the displacement norm after the first prediction(iteration 0) equals 1 by definition.To check convergence, always one additional iteration is necessary.
+            </remarks>
+        </member>
+        <member name="F:DEMSoft.IGA.CriterionConvergence.ForceCriterion">
+            <summary>
+            Force criterion
+            </summary>
+            <remarks>
+            The force norm is the Euclidian norm of the out-of-balance force vector g . To check convergence, the force norm after the current iteration is checked against the norm of the initial unbalance g0
+            Force norm ratio = $\displaystyle {\frac{{ \sqrt{ \mathbf{g}_{i}^{\mathrm{\scriptscriptstyle{T}}}\;{ \sqrt{ \mathbf{g}_{0}^{\mathrm{\scriptscriptstyle{T}}}\; \mathbf{g}_{0} } }}}$	(31.16)
+            Because the reference force norm is known before the first prediction of displacements, the force norm ratio can be calculated directly after the first prediction, i = 1 in (31.16). This means that if the first prediction is correct(nearly linear behavior) the force norm can detect convergence right away and no unnecessary iterations have to be performed.
+            </remarks>
+        </member>
+        <member name="F:DEMSoft.IGA.CriterionConvergence.EnergyCriterion">
+            <summary>
+            Energy criterion
+            </summary>
+            <remarks>
+            A third way to check convergence is the energy norm. This norm is composed of internal forces and relative displacements as indicated in Figure 31.8 with $ \Delta$E0 and $ \delta$E1 . To determine convergence, the energy ratio is calculated as
+            Energy norm ratio = $\displaystyle \left\vert\vphantom{ \frac{ \delta\mathbf{u}_{i}^{\mathrm{\scriptT}}}\: ( \mathbf{f}_{\mathrm{int},1} + \mathbf{f}_{\mathrm{int},0} ) } }\right.$$\displaystyle {\frac{{ \delta\mathbf{u}_{i}^{\mathrm{\scriptscriptstyle{T}}}\: tstyle{T}}}\: ( \mathbf{f}_{\mathrm{int},1} + \mathbf{f}_{\mathrm{int},0} ) }}}$$\displaystyle \left.\vphantom{ \frac{ \delta\mathbf{u}_{i}^{\mathrm{\scriptscri\: ( \mathbf{f}_{\mathrm{int},1} + \mathbf{f}_{\mathrm{int},0} ) } }\right\vert$	(31.18)
+            Note that here the internal force is used and not the out-of-balance force.Use of the out-of-balance force would be improper, for a Line Search procedure could then minimize the norm, see Equation (31.15), before the solution really converges to equilibrium.As with the displacement norm, the energy norm also requires an additional iteration to detect convergence.
+            The choice of the proper norm and its convergence criterion depends on the type of analysis.Using a lot of prescribed displacements generally makes the displacement norm less useful. On the other hand, a structure that can expand freely will hardly build up any internal forces and the force norm may be less useful.Always be sure that the reference norm(the denominator in the ratios) has a reasonable value i.e., not close to zero.
+            Experience shows that the convergence criterion for softening type behavior should be more strict than the criterion that can be used in a hardening type analysis. If there is any doubt about the criterion to be used, it is advisable to perform the analysis with two distinct criteria and check the differences in results.If large differences occur, at least the less strict norm was to large.
+            </remarks>
+        </member>
+        <member name="F:DEMSoft.IGA.CriterionConvergence.ResidualCriterion">
+            <summary>
+            Residual criterion
+            </summary>
+            <remarks>
+            The residual norm is also a Euclidian norm of the out-of-balance force vector g . Contraray to the force norm, the residual norm also takes the values in constrained degrees of freedom (supports and tyings) into account. To check convergence, DIANA compares the change in the residual norm during the current iteration with the change in the residual norm during the first prediction of displacements in the current step.
+            Residual norm ratio = $\displaystyle {\frac{{ \left\vert \sqrt{ \mathbf{g}_{i}^{\mathrm{\scriptscriptsthbf{g}_{n}^{\mathrm{\scriptscriptstyle{T}}}\mathbf{g}_{n} } \, \right\vert }}}$	(31.19)
+            Where gn denotes the out-of-balance force vector in the last iteration of the previous step.In the first step DIANA takes its value as zero.
+            </remarks>
+        </member>
+        <member name="F:DEMSoft.IGA.CriterionConvergence.DisplacementCriterion2">
+            <summary>
+            Displacement criterion Nam Ho-Kim (2.13)
+            </summary>
+            <see cref="!:Introduction to Nonlinear Finite Element Analysis"/>
+        </member>
+        <member name="F:DEMSoft.IGA.CriterionConvergence.DisplacementCriterion22">
+            <summary>
+            Displacement criterion Nam Ho-Kim (2.13) sqrt
+            </summary>
+            <see cref="!:Introduction to Nonlinear Finite Element Analysis"/>
+        </member>
+        <member name="F:DEMSoft.IGA.CriterionConvergence.ResidualCriterion2">
+            <summary>
+            Residual criterion Nam Ho-Kim (2.12)
+            </summary>
+            <see cref="!:Introduction to Nonlinear Finite Element Analysis"/>
+        </member>
+        <member name="F:DEMSoft.IGA.CriterionConvergence.DisplacementCriterion3">
+            <summary>
+            Displacement criterion (6.3.63)
+            </summary>
+            <see cref="!:Ted Belytschko"/>
+        </member>
+        <member name="F:DEMSoft.IGA.CriterionConvergence.DisplacementCriterion4">
+            <summary>
+            Displacement criterion (6.3.63) remove constrain value
+            </summary>
+            <see cref="!:Ted Belytschko"/>
+        </member>
+        <member name="F:DEMSoft.IGA.CriterionConvergence.DisplacementCriterion5">
+            <summary>
+            Displacement criterion not normalize
+            </summary>
+            <see cref="!:Wu"/>
+        </member>
+        <member name="F:DEMSoft.IGA.CriterionConvergence.EnergyCriterion3">
+            <summary>
+            Energy criterion (6.3.64)
+            </summary>
+            <see cref="!:Ted Belytschko"/>
+        </member>
+        <member name="F:DEMSoft.IGA.CriterionConvergence.ResidualCriterion3">
+            <summary>
+            Residual criterion (6.3.62)
+            </summary>
+            <see cref="!:Ted Belytschko"/>
+        </member>
+        <member name="T:DEMSoft.IGA.TypeCoordination">
+            <summary>
+            Enumerate of coordination
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.Edge.#ctor(System.Int32,DEMSoft.IGA.Face)">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="index">0 - first edge on u direction, 1 - end edge on u direction, 2 - first edge on v direction, 3 - end edge on v direction </param>
+            <param name="face">Face to be attach edge</param>
+        </member>
+        <member name="M:DEMSoft.IGA.ElementPiezoelectric2D.CreatePiezoElectricStressMatrix">
+            <summary>
+            e
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.ElementPiezoelectric2D.CreatePiezoElectricStrainMatrix">
+            <summary>
+            d
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.ElementPiezoelectric3D.CreatePiezoElectricStressMatrix(CenterSpace.NMath.Core.DoubleMatrix)">
+            <summary>
+            e
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.ElementPiezoelectric3D.CreatePiezoElectricStrainMatrix(CenterSpace.NMath.Core.DoubleMatrix)">
+            <summary>
+            d
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.ElementStructureElastic3D.CreateMaterialMatrix(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Material matrix at gauss point
+            </summary>
+            <param name="i">Index of gp at xi direction</param>
+            <param name="j">Index of gp at eta direction</param>
+            <param name="k">Index of gp at zeta direction</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.ElementStructureElasticPlate.CreateMaterialMatrixHSDTFGM">
+            <summary>
+            Compute material matrix at gauss point
+            </summary>
+            <param name="i"></param>
+            <param name="j"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.ElementStructurePhaseField2D.OmegaD(System.Double,System.Double,System.Double,DEMSoft.IGA.TypeModelPhasefield)">
+            <summary>
+            The energetic degradation function
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.ElementStructurePhaseField2D.PositiveRampFunction(System.Double)">
+            <summary>
+            Miehe 2010 A phase field model for rate-independent crack propagation: Robust algorithmic implementation based on operator splits
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.ElementStructurePhaseField3D.CreateMaterialMatrix(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Material matrix at gauss point
+            </summary>
+            <param name="i">Index of gp at xi direction</param>
+            <param name="j">Index of gp at eta direction</param>
+            <param name="k">Index of gp at zeta direction</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.ElementStructurePhaseField3D.PositiveRampFunction(System.Double)">
+            <summary>
+            Miehe 2010 A phase field model for rate-independent crack propagation: Robust algorithmic implementation based on operator splits
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.ElementStructurePhaseField3D.OmegaD(System.Double,System.Double,System.Double,DEMSoft.IGA.TypeModelPhasefield)">
+            <summary>
+            The energetic degradation function
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.ElementStructurePlastic2D.CoefficientRamOsg(System.Double[0:,0:])">
+            <summary>
+            ////////////////////
+            </summary>
+            <param name="table"></param>
+            <returns></returns>
+            
+        </member>
+        <member name="M:DEMSoft.IGA.ElementStructurePlastic2D.CoefficientRamOsg(System.Double[0:,0:],System.Double)">
+            <summary>
+            ////////////
+            </summary>
+            <param name="table"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.ElementThermoelastic3D.CreateMaterialMatrix(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Material matrix at gauss point
+            </summary>
+            <param name="i">Index of gp at xi direction</param>
+            <param name="j">Index of gp at eta direction</param>
+            <param name="k">Index of gp at zeta direction</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.Face.GetTArray">
+            ////////////////////////////// Tien
+            <summary>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.Face.GetParametricEndFace(System.Int32)">
+            <summary>
+            Get parametric coordinate on end of face on 2 direction
+            </summary>
+            <param name="index">0:first direction, 1:second direction</param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.GaussPoints.Find(DEMSoft.IGA.DataInGausspoint)">
+            <summary>
+            Find item in list of data of gausspoint
+            </summary>
+            <param name="type">Type of variable data in gausspoint</param>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.IGA.HeatFlux">
+            <summary>
+            Pressure load on edge of 2D patch
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.HeatFlux.#ctor(DEMSoft.NURBS.AbstractMeshPart,System.Boolean)">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="mp">Mesh part which be applied load</param>
+            <param name="isInGlobal">Coresponding on global coordinate (x-y) or local coordinate (n-t)</param>
+            <param name="isNaturalCoordinate">Coresponding on natural coordinate or physical coordinate</param>
+        </member>
+        <member name="M:DEMSoft.IGA.HeatFlux.ComputeLocalLoadVector(System.Double)">
+            <summary>
+            Compute local load vector
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.IGA.HeatFluxEdge">
+            <summary>
+            Pressure load on edge of 2D patch
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.HeatFluxEdge.#ctor(DEMSoft.IGA.Edge,DEMSoft.Function.FunctionRToR)">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="e">edge of element which be applied load</param>
+            <param name="isInGlobal">Coresponding on global coordinate (x-y) or local coordinate (n-t)</param>
+            <param name="p">global coordinate (x-y) : p[0] = px, p[1] = py,  local coordinate (n-t) : p[0] = pn, p[1] = pt</param>
+        </member>
+        <member name="M:DEMSoft.IGA.HeatFluxEdge.#ctor(DEMSoft.IGA.Edge,System.Boolean,DEMSoft.Function.FunctionRToR)">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="e">edge of element which be applied load</param>
+            <param name="isNaturalCoordinate">Coresponding on global coordinate (x-y) or local coordinate (n-t)</param>
+            <param name="p">global coordinate (x-y) : p[0] = px, p[1] = py,  local coordinate (n-t) : p[0] = pn, p[1] = pt</param>
+        </member>
+        <member name="M:DEMSoft.IGA.HeatFluxEdge.ComputeLocalLoadVector(System.Double)">
+            <summary>
+            Compute local load vector
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.HeatFuxFace.#ctor(DEMSoft.IGA.Face,System.Boolean,DEMSoft.Function.FunctionR2ToR)">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="face">face of element which be applied load</param>
+            <param name="isInGlobal">Coresponding on global coordinate (x-y) or local coordinate (n-t)</param>
+            <param name="p">global coordinate (x-y) : p[0] = px, p[1] = py,  local coordinate (n-t) : p[0] = pn, p[1] = pt</param>
+        </member>
+        <member name="M:DEMSoft.IGA.HeatFuxFace.#ctor(DEMSoft.IGA.Face,System.Boolean,System.Boolean,DEMSoft.Function.FunctionR2ToR)">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="face">face of element which be applied load</param>
+            <param name="isInGlobal">Coresponding on global coordinate (x-y) or local coordinate (n-t)</param>
+            <param name="p">global coordinate (x-y) : p[0] = px, p[1] = py,  local coordinate (n-t) : p[0] = pn, p[1] = pt</param>
+        </member>
+        <member name="M:DEMSoft.IGA.HeatFuxFace.ComputeLocalLoadVector(System.Double)">
+            <summary>
+            Compute local load vector
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.IGA.ModelPiezoelectricModal">
+            <summary>
+            Structure 2D problem (plane stress, plane strain). Default is plane stress
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.ModelPiezoelectricModal.#ctor(DEMSoft.IGA.Dimension,System.String,System.String)">
+            <summary>
+            Constructor class
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.ModelPiezoelectricModal.Solve">
+            <summary>
+            Solve problem
+            </summary>
+        </member>
+        <member name="T:DEMSoft.IGA.ModelPiezoelectricStatic">
+            <summary>
+            Structure 2D problem (plane stress, plane strain). Default is plane stress
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.ModelPiezoelectricStatic.#ctor(DEMSoft.IGA.Dimension,System.String,System.String)">
+            <summary>
+            Constructor class
+            </summary>
+        </member>
+        <member name="T:DEMSoft.IGA.ModelStructureBuckling">
+            <summary>
+            Structure 2D problem (plane stress, plane strain). Default is plane stress
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.ModelStructureBuckling.#ctor(DEMSoft.IGA.Dimension,System.String,System.String)">
+            <summary>
+            Constructor class
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.ModelStructureBuckling.Solve">
+            <summary>
+            Solve problem
+            </summary>
+        </member>
+        <member name="T:DEMSoft.IGA.ModelStructureModal">
+            <summary>
+            Structure 2D problem (plane stress, plane strain). Default is plane stress
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.ModelStructureModal.#ctor(DEMSoft.IGA.Dimension,System.String,System.String)">
+            <summary>
+            Constructor class
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.ModelStructureModal.Solve">
+            <summary>
+            Solve problem
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.TypeDegradationEnergy.Isotropic">
+            <summary>
+            Molnar (2017) 2D and 3D Abaqus implementation of a robust staggered phase-field solution for modeling brittle fracture
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.TypeDegradationEnergy.Anisotropic">
+            <summary>
+            Miehe (2010) A phase field model for rate-independent crack propagation: robust algorithmic implementation based on operator splits.
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.TypeDegradationEnergy.Hybrid">
+            <summary>
+            Ambati(2014) A review on phase-field models of brittle fractur and a new fast hybrid formulation
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.TypeModelPhasefield.AT2">
+            <summary>
+            A quadratic degradation function, Miehe model
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.TypeModelPhasefield.Cubic">
+            <summary>
+            A cubic degradation function
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.TypeModelPhasefield.PFCZM_Linear">
+            <summary>
+            Linear softening curve Wu(2019)
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.TypeModelPhasefield.PFCZM_BLinear">
+            <summary>
+            Linear softening curve Wu(2019)
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.TypeModelPhasefield.PFCZM_Exponential">
+            <summary>
+            Exponential softening curve Wu(2019)
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.TypeModelPhasefield.PFCZM_Hyperbolic">
+            <summary>
+            Hyperbolic softening curve Wu(2019)
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.TypeModelPhasefield.PFCZM_Cornelissen">
+            <summary>
+            Cornelissen softening curve Wu(2019)
+            </summary>
+        </member>
+        <member name="T:DEMSoft.IGA.ModelStructurePhaseFieldStatic">
+            <summary>
+            Structure 2D problem (plane stress, plane strain). Default is plane stress
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.ModelStructurePhaseFieldStatic.l0">
+            <summary>
+            Length Scale Parameter, Characteristic Crack Width [mm]
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.ModelStructurePhaseFieldStatic.typePhaseFieldModel">
+            <summary>
+            Griffith’s or Irwin’s characteristic length lch, Characteristic Crack Width [mm]
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.ModelStructurePhaseFieldStatic.n">
+            <summary>
+            Positive integer is used in penalty, default is 3
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.ModelStructurePhaseFieldStatic.k">
+            <summary>
+            Parameter of well-Conditioned System
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.ModelStructurePhaseFieldStatic.epsi">
+            <summary>
+            The parameter epsi controls the magnitude of the penalty term,
+            and should be set to a value that is large enough to sufficiently 
+            enforce the irreversibility condition, but not too large as to result
+            in an ill-conditioned system.
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.ModelStructurePhaseFieldStatic.typeDegradationModel">
+            <summary>
+            An isotropic or anisotropic constitutive assumption for the degradation of energy due to fracture Miehe(2010)
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.ModelStructurePhaseFieldStatic.#ctor(DEMSoft.IGA.Dimension,System.String,System.String)">
+            <summary>
+            Constructor class
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.ModelStructurePhaseFieldStatic.SetPhaseFieldParameters(System.Double,System.Double,System.Double,DEMSoft.IGA.TypeModelPhasefield,DEMSoft.IGA.TypeFailureCriterion)">
+            <summary>
+            Set phase field parameters
+            </summary>
+            <param name="l0">Length Scale Parameter, Characteristic Crack Width [mm] (default is 0.1)</param>
+            <param name="k">Parameter of well-Conditioned System (default is 0.0001)</param>
+            <param name="eta">A viscosity parameter (default is 1e-6)</param>
+        </member>
+        <member name="M:DEMSoft.IGA.ModelStructurePhaseFieldStatic.Solve">
+            <summary>
+            Solve problem
+            </summary>
+        </member>
+        <member name="T:DEMSoft.IGA.ModelStructureStatic">
+            <summary>
+            Structure 2D problem (plane stress, plane strain). Default is plane stress
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.ModelStructureStatic.#ctor(DEMSoft.IGA.Dimension,System.String,System.String)">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="problem">Define state of stress, plane stress or plane strain</param>
+        </member>
+        <member name="M:DEMSoft.IGA.ModelStructureStatic.Solve">
+            <summary>
+            Solve problem
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.ModelStructureStatic.ComputeReactionForce">
+            <summary>
+            Return array of reaction force on each constraint
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.IGA.ModelStructureTransient">
+            <summary>
+            Structure 2D problem (plane stress, plane strain). Default is plane stress
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.ModelStructureTransient.#ctor(DEMSoft.IGA.Dimension,System.String,System.String)">
+            <summary>
+            Constructor class
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.ModelStructureTransient.Solve">
+            <summary>
+            Solve problem
+            </summary>
+        </member>
+        <member name="T:DEMSoft.IGA.ModelThermalSteady">
+            <summary>
+            Abstract thermal model
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.ModelThermalSteady.#ctor(DEMSoft.IGA.Dimension,System.String,System.String)">
+            <summary>
+            Constructor class
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.ModelThermalSteady.Solve">
+            <summary>
+            Solve problem
+            </summary>
+        </member>
+        <member name="T:DEMSoft.IGA.ModelThermalTransient">
+            <summary>
+            Abstract thermal model
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.ModelThermalTransient.#ctor(DEMSoft.IGA.Dimension,System.String,System.String)">
+            <summary>
+            Constructor class
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.ModelThermalTransient.Solve">
+            <summary>
+            Solve problem
+            </summary>
+        </member>
+        <member name="P:DEMSoft.IGA.MonitorDataHistorism.MonitorDataStore">
+            <summary>
+            Store data monitor
+            </summary>
+        </member>
+        <member name="P:DEMSoft.IGA.PatchStructurePlate.KinematicsFunction">
+            <summary>
+            Kinematics function in HSDT plate
+            </summary>
+        </member>
+        <member name="T:DEMSoft.IGA.Pressure">
+            <summary>
+            Pressure load on edge of 2D patch
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.Pressure.#ctor(DEMSoft.NURBS.AbstractMeshPart,System.Boolean,System.Boolean)">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="mp">Mesh part which be applied load</param>
+            <param name="isInGlobal">Direction coresponding on global coordinate (x-y) or local coordinate (n-t)</param>
+            <param name="isNaturalCoordinate">Value coresponding on natural coordinate or physical coordinate</param>
+        </member>
+        <member name="M:DEMSoft.IGA.Pressure.ComputeLocalLoadVector(System.Double)">
+            <summary>
+            Compute local load vector
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.IGA.PressureEdge">
+            <summary>
+            Pressure load on edge of 2D patch
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.PressureEdge.#ctor(DEMSoft.IGA.Edge,System.Boolean,DEMSoft.Function.FunctionRToR[])">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="e">edge of element which be applied load</param>
+            <param name="isInGlobal">Direction coresponding on global coordinate (x-y) or local coordinate (n-t)</param>
+            <param name="p">global coordinate (x-y) : p[0] = px, p[1] = py,  local coordinate (n-t) : p[0] = pn, p[1] = pt</param>
+        </member>
+        <member name="M:DEMSoft.IGA.PressureEdge.#ctor(DEMSoft.IGA.Edge,System.Boolean,System.Boolean,DEMSoft.Function.FunctionRToR[])">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="e">edge of element which be applied load</param>
+            <param name="isInGlobal">Direction coresponding on global coordinate (x-y) or local coordinate (n-t)</param>
+            <param name="isNaturalCoordinate">Value coresponding on natural coordinate or physical coordinate</param>
+            <param name="p">global coordinate (x-y) : p[0] = px, p[1] = py,  local coordinate (n-t) : p[0] = pn, p[1] = pt</param>
+        </member>
+        <member name="M:DEMSoft.IGA.PressureEdge.ComputeLocalLoadVector(System.Double)">
+            <summary>
+            Compute local load vector
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.IGA.PressureEdgeTime">
+            <summary>
+            Pressure load on edge of 2D patch
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.PressureEdgeTime.#ctor(DEMSoft.IGA.Edge,System.Boolean,DEMSoft.Function.FunctionRToR,DEMSoft.Function.FunctionRToR[])">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="e">edge of element which be applied load</param>
+            <param name="isInGlobal">Direction coresponding on global coordinate (x-y) or local coordinate (n-t)</param>
+            <param name="piecewiseLoad">load function coressponse the time</param>
+            <param name="p">global coordinate (x-y) : p[0] = px, p[1] = py,  local coordinate (n-t) : p[0] = pn, p[1] = pt</param>
+        </member>
+        <member name="M:DEMSoft.IGA.PressureEdgeTime.#ctor(DEMSoft.IGA.Edge,System.Boolean,System.Boolean,DEMSoft.Function.FunctionRToR,DEMSoft.Function.FunctionRToR[])">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="e">edge of element which be applied load</param>
+            <param name="isInGlobal">Coresponding on global coordinate (x-y) or local coordinate (n-t)</param>
+            <param name="isNaturalCoordinate">Value coresponding on natural coordinate or physical coordinate</param>
+            <param name="piecewiseLoad">load function coressponse the time</param>
+            <param name="p">global coordinate (x-y) : p[0] = px, p[1] = py,  local coordinate (n-t) : p[0] = pn, p[1] = pt</param>
+        </member>
+        <member name="M:DEMSoft.IGA.PressureEdgeTime.ComputeLocalLoadVector(System.Double)">
+            <summary>
+            Compute local load vector
+            </summary>
+            <param name="time">time of load vector to compute</param>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.IGA.PressureFace">
+            <summary>
+            Pressure load on face of 3D patch
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.PressureFace.#ctor(DEMSoft.IGA.Face,System.Boolean,DEMSoft.Function.FunctionR2ToR[])">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="face">face of element which be applied load</param>
+            <param name="isInGlobal">Direction coresponding on global coordinate (x-y) or local coordinate (n-t)</param>
+            <param name="p">global coordinate (x-y) : p[0] = px, p[1] = py,  local coordinate (n-t) : p[0] = pn, p[1] = pt</param>
+        </member>
+        <member name="M:DEMSoft.IGA.PressureFace.#ctor(DEMSoft.IGA.Face,System.Boolean,System.Boolean,DEMSoft.Function.FunctionR2ToR[])">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="face">face of element which be applied load</param>
+            <param name="isInGlobal">Direction coresponding on global coordinate (x-y) or local coordinate (n-t)</param>
+            <param name="isNaturalCoordinate">Value coresponding on natural coordinate or physical coordinate</param>
+            <param name="p">global coordinate (x-y) : p[0] = px, p[1] = py,  local coordinate (n-t) : p[0] = pn, p[1] = pt</param>
+        </member>
+        <member name="M:DEMSoft.IGA.PressureFace.ComputeLocalLoadVector(System.Double)">
+            <summary>
+            Compute local load vector
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.IGA.PressureFaceTime">
+            <summary>
+            Pressure load on face of 3D patch
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.PressureFaceTime.#ctor(DEMSoft.IGA.Face,System.Boolean,DEMSoft.Function.FunctionRToR,DEMSoft.Function.FunctionR2ToR[])">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="face">face of element which be applied load</param>
+            <param name="isInGlobal">Direction coresponding on global coordinate (x-y) or local coordinate (n-t)</param>
+            <param name="piecewiseLoad">load function coressponse the time</param>
+            <param name="p">global coordinate (x-y) : p[0] = px, p[1] = py,  local coordinate (n-t) : p[0] = pn, p[1] = pt</param>
+        </member>
+        <member name="M:DEMSoft.IGA.PressureFaceTime.#ctor(DEMSoft.IGA.Face,System.Boolean,System.Boolean,DEMSoft.Function.FunctionRToR,DEMSoft.Function.FunctionR2ToR[])">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="face">face of element which be applied load</param>
+            <param name="isInGlobal">Direction coresponding on global coordinate (x-y) or local coordinate (n-t)</param>
+            <param name="isNaturalCoordinate">Value coresponding on natural coordinate or physical coordinate</param>
+            <param name="piecewiseLoad">load function coressponse the time</param>
+            <param name="p">global coordinate (x-y) : p[0] = px, p[1] = py,  local coordinate (n-t) : p[0] = pn, p[1] = pt</param>
+        </member>
+        <member name="M:DEMSoft.IGA.PressureFaceTime.ComputeLocalLoadVector(System.Double)">
+            <summary>
+            Compute local load vector
+            </summary>
+            <param name="time">time of load vector to compute</param>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.IGA.PressureSurface">
+            <summary>
+            Pressure load on face of 3D patch
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.PressureSurface.#ctor(DEMSoft.IGA.Face,System.Boolean,DEMSoft.Function.FunctionR2ToR)">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="face">face of element which be applied load</param>
+            <param name="isInGlobal">Coresponding on global coordinate (x-y) or local coordinate (n-t)</param>
+            <param name="p">global coordinate (x-y) : p[0] = px, p[1] = py,  local coordinate (n-t) : p[0] = pn, p[1] = pt</param>
+        </member>
+        <member name="M:DEMSoft.IGA.PressureSurface.#ctor(DEMSoft.IGA.Face,System.Boolean,System.Boolean,DEMSoft.Function.FunctionR2ToR)">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="face">face of element which be applied load</param>
+            <param name="isInGlobal">Coresponding on global coordinate (x-y) or local coordinate (n-t)</param>
+            <param name="p">global coordinate (x-y) : p[0] = px, p[1] = py,  local coordinate (n-t) : p[0] = pn, p[1] = pt</param>
+        </member>
+        <member name="M:DEMSoft.IGA.PressureSurface.ComputeLocalLoadVector(System.Double)">
+            <summary>
+            Compute local load vector
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.IGA.SolverDisplacementControlled">
+            <summary>
+            Implement the load controlled Newton-Raphson solver for non-linear problems
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.SolverDisplacementControlled.#ctor(DEMSoft.IGA.AbstractModelStructure,DEMSoft.IGA.TypeNonlinearSolver)">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="model"></param>
+            <param name="type"></param>
+        </member>
+        <member name="M:DEMSoft.IGA.SolverDisplacementControlled.Solve(DEMSoft.IGA.TypeNonlinearSolver)">
+            <summary>
+            Solve
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.SolverDisplacementControlled.SolveOneSubstepLoad(CenterSpace.NMath.Core.DoubleVector,CenterSpace.NMath.Core.DoubleVector,CenterSpace.NMath.Core.DoubleVector@,System.Double)">
+            <summary>
+            Solve for one load step. External load: FStep = lambda*F (F is the global load vector)
+            </summary>
+            <param name="un"></param>
+            <param name="Fstep"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.SolverDisplacementControlled.SolveOneIterationDense(CenterSpace.NMath.Core.DoubleMatrix,CenterSpace.NMath.Core.DoubleVector,CenterSpace.NMath.Core.DoubleVector,System.Double[]@,CenterSpace.NMath.Core.DoubleVector@)">
+            <summary>
+            Solve for one iteration.
+            </summary>
+            <param name="Fstep"></param>
+            <param name="ui"></param>
+            <param name="err1"></param>
+            <param name="bUpdate"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.IGA.SolverLoadControlled">
+            <summary>
+            Implement the load controlled Newton-Raphson solver for non-linear problems
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.SolverLoadControlled.#ctor(DEMSoft.IGA.AbstractModelStructure,DEMSoft.IGA.TypeNonlinearSolver)">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="model"></param>
+            <param name="type"></param>
+        </member>
+        <member name="M:DEMSoft.IGA.SolverLoadControlled.Solve(DEMSoft.IGA.TypeNonlinearSolver)">
+            <summary>
+            Solve
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.SolverLoadControlled.SolveOneSubstepLoad(CenterSpace.NMath.Core.DoubleVector,CenterSpace.NMath.Core.DoubleVector,CenterSpace.NMath.Core.DoubleVector@,System.Double)">
+            <summary>
+            Solve for one load step. External load: FStep = lambda*F (F is the global load vector)
+            </summary>
+            <param name="un"></param>
+            <param name="Fstep"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.SolverLoadControlled.SolveOneIterationDense(CenterSpace.NMath.Core.DoubleMatrix,CenterSpace.NMath.Core.DoubleVector,CenterSpace.NMath.Core.DoubleVector,System.Double[]@,CenterSpace.NMath.Core.DoubleVector@)">
+            <summary>
+            Solve for one iteration.
+            </summary>
+            <param name="Fstep"></param>
+            <param name="ui"></param>
+            <param name="err1"></param>
+            <param name="bUpdate"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DEMSoft.IGA.Void2D">
+            <summary>
+            Void of structure using phase field
+            </summary>
+        </member>
+        <member name="T:DEMSoft.IGA.Volume">
+            <summary>
+            Geometry of one element. Volume is geometry of 3D element
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.Volume.index">
+            <summary>
+            On one coordinate of volume, we have two coordinate [xi(i), xi(i+1)], 0 - xi(i); 1 - xi(i+1)
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.Volume.face">
+            <summary>
+            Six face of volume
+            </summary>
+        </member>
+        <member name="F:DEMSoft.IGA.Volume.element">
+            <summary>
+            Element which volume correspond
+            </summary>
+        </member>
+        <member name="M:DEMSoft.IGA.Volume.#ctor(DEMSoft.IGA.AbstractElement3D)">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="element">3D element</param>
+        </member>
+        <member name="M:DEMSoft.IGA.Volume.GetElement">
+            <summary>
+            Get element which volume coresspond
+            </summary>
+            <returns>3D element</returns>
+        </member>
+        <member name="M:DEMSoft.IGA.Volume.GetControlPointsOnVolume">
+            <summary>
+            Get control points on volume
+            </summary>
+            <returns>control points</returns>
+        </member>
+        <member name="M:DEMSoft.IGA.Volume.GetFace(System.Int32)">
+            <summary>
+            Get face of volume
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DEMSoft.IGA.Volume.GetDegree(System.Int32)">
+            <summary>
+            Get degree of volume on each direction
+            </summary>
+            <param name="indexDirection">Index of direction on three direction, 0 - xi, 1 - eta, 2 - zeta</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
