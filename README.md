@@ -31,3 +31,8 @@ A few mesh images
 <img src="fig/mesh1700.png" width="425"/> <img src="fig/800mesh.png" width="250"/> 
 
 <img src="fig/1.png" width="425"/> <img src="fig/2.png" width="250"/> 
+
+## Demo mesh
+
+Go to file [DemoMesh](DemoMesh/Program.cs) to see
+
